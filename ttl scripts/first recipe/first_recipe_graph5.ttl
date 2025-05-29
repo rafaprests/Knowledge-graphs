@@ -1,0 +1,167 @@
+@prefix : <http://example.org/recipe#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers rdf:type :Recipe ;
+    :label "Easy Seafood Burgers" ;
+    :description "Ready in 10 minutes. Serves 4 people." ;
+    :steps (:Step1 :Step2 :Step3) ;
+    :ingredients (:Tuna :Celery :Relish :Eggs :BreadCrumbs :GreenOnions :Salt :Pepper) ;
+    :categories ("Seafood" "Burgers" "Easy") .
+
+:Step1 rdf:type :Step ;
+    :order 1 ;
+    :utensils (:MixingBowl) ;
+    :inputs (:Tuna :Celery :Relish :Eggs :BreadCrumbs :GreenOnions :Salt :Pepper) ;
+    :outputs (:Mixture) ;
+    :Action :Combine .
+
+:Step2 rdf:type :Step ;
+    :order 2 ;
+    :utensils () ;
+    :inputs (:Mixture) ;
+    :outputs (:Patties) ;
+    :Action :Shape .
+
+:Step3 rdf:type :Step ;
+    :order 3 ;
+    :utensils (:NonStickPan) ;
+    :inputs (:Patties) ;
+    :outputs (:CookedPatties) ;
+    :Action :Cook .
+
+:Tuna rdf:type :Ingredient ;
+    :alternatives (:TunaAlternative :SalmonAlternative) .
+
+:Celery rdf:type :Ingredient ;
+    :alternatives (:CeleryAlternative) .
+
+:Relish rdf:type :Ingredient ;
+    :alternatives (:RelishAlternative) .
+
+:Eggs rdf:type :Ingredient ;
+    :alternatives (:EggsAlternative) .
+
+:BreadCrumbs rdf:type :Ingredient ;
+    :alternatives (:BreadCrumbsAlternative) .
+
+:GreenOnions rdf:type :Ingredient ;
+    :alternatives (:GreenOnionsAlternative) .
+
+:Salt rdf:type :Ingredient ;
+    :alternatives (:SaltAlternative) .
+
+:Pepper rdf:type :Ingredient ;
+    :alternatives (:PepperAlternative) .
+
+:TunaAlternative rdf:type :Alternative ;
+    :food_item :TunaItem ;
+    :amount :Can170g .
+
+:SalmonAlternative rdf:type :Alternative ;
+    :food_item :SalmonItem ;
+    :amount :Can213g .
+
+:CeleryAlternative rdf:type :Alternative ;
+    :food_item :CeleryItem ;
+    :amount :QuarterCup .
+
+:RelishAlternative rdf:type :Alternative ;
+    :food_item :RelishItem ;
+    :amount :TwoTablespoons .
+
+:EggsAlternative rdf:type :Alternative ;
+    :food_item :EggItem ;
+    :amount :Count2 .
+
+:BreadCrumbsAlternative rdf:type :Alternative ;
+    :food_item :BreadCrumbsItem ;
+    :amount :HalfCup .
+
+:GreenOnionsAlternative rdf:type :Alternative ;
+    :food_item :GreenOnionsItem ;
+    :amount :Count2 .
+
+:SaltAlternative rdf:type :Alternative ;
+    :food_item :SaltItem ;
+    :amount :ToTaste .
+
+:PepperAlternative rdf:type :Alternative ;
+    :food_item :PepperItem ;
+    :amount :ToTaste .
+
+:TunaItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:SalmonItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:CeleryItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:RelishItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:EggItem rdf:type :FoodItem ;
+    :state "liquid" .
+
+:BreadCrumbsItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:GreenOnionsItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:SaltItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:PepperItem rdf:type :FoodItem ;
+    :state "solid" .
+
+:Mixture rdf:type :FoodItem ;
+    :state "solid" .
+
+:Patties rdf:type :FoodItem ;
+    :state "solid" .
+
+:CookedPatties rdf:type :FoodItem ;
+    :state "solid" .
+
+:MixingBowl rdf:type :Utensil ;
+    :label "Mixing Bowl" .
+
+:NonStickPan rdf:type :Utensil ;
+    :label "Non-Stick Pan" .
+
+:Combine rdf:type :Action ;
+    :label "Combine" ;
+    :description "Mix all ingredients together." .
+
+:Shape rdf:type :Action ;
+    :label "Shape" ;
+    :description "Form the mixture into patties." .
+
+:Cook rdf:type :Action ;
+    :label "Cook" ;
+    :description "Cook the patties until golden brown." .
+
+:Can170g rdf:type :Quantity ;
+    :value "1 can (170g)" .
+
+:Can213g rdf:type :Quantity ;
+    :value "1 can (213g)" .
+
+:QuarterCup rdf:type :Quantity ;
+    :value "1/4 cup (60mL)" .
+
+:TwoTablespoons rdf:type :Quantity ;
+    :value "2 Tbsp (30mL)" .
+
+:Count2 rdf:type :Quantity ;
+    :value "2" .
+
+:HalfCup rdf:type :Quantity ;
+    :value "1/2 cup (125mL)" .
+
+:ToTaste rdf:type :Quantity ;
+    :value "to taste" .
+

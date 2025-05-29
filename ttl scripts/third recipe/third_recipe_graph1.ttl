@@ -1,0 +1,352 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipe/> .
+@prefix food: <http://example.org/food/> .
+
+# Problem Definition for Sloppy Joes
+recipe:SloppyJoes rdf:type tasklang:Problem ;
+    rdfs:label "Sloppy Joes" ;
+    tasklang:hasURI <http://example.org/problems/SloppyJoes> ;
+    tasklang:description "A quick and easy family favorite sandwich with ground beef in a savory tomato sauce." ;
+    tasklang:goal "Create a delicious Sloppy Joes meal ready to serve" ;
+    
+    # Inputs section
+    tasklang:hasInputs [
+        rdf:type tasklang:Inputs ;
+        tasklang:hasResources (
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Ground Beef" ;
+                tasklang:description "Ground beef" ;
+                tasklang:quantity "½ lb (250g)" ;
+                tasklang:quality "Fresh"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Onion" ;
+                tasklang:description "Onion, finely chopped" ;
+                tasklang:quantity "1" ;
+                tasklang:quality "Fresh"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Celery" ;
+                tasklang:description "Celery stalk, finely chopped" ;
+                tasklang:quantity "1" ;
+                tasklang:quality "Fresh"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Tomato Sauce" ;
+                tasklang:description "Homestyle Tomato Sauce with Herbs" ;
+                tasklang:quantity "1 cup (250mL)" ;
+                tasklang:quality "Prepared"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Worcestershire Sauce" ;
+                tasklang:description "Worcestershire sauce" ;
+                tasklang:quantity "½ tsp (2mL)" ;
+                tasklang:quality "Prepared"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Corn Starch" ;
+                tasklang:description "Corn starch" ;
+                tasklang:quantity "2 Tbsp (30mL)" ;
+                tasklang:quality "Dry"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Water" ;
+                tasklang:description "Cold water" ;
+                tasklang:quantity "2 Tbsp (30mL)" ;
+                tasklang:quality "Cold"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Hamburger Buns" ;
+                tasklang:description "Hamburger buns, split, toasted" ;
+                tasklang:quantity "2" ;
+                tasklang:quality "Fresh"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Salt" ;
+                tasklang:description "Salt for seasoning" ;
+                tasklang:quantity "To taste" ;
+                tasklang:quality "Table salt"
+            ]
+            [
+                rdf:type tasklang:Resource ;
+                rdfs:label "Pepper" ;
+                tasklang:description "Pepper for seasoning" ;
+                tasklang:quantity "To taste" ;
+                tasklang:quality "Ground black pepper"
+            ]
+        ) ;
+        
+        tasklang:design "Stovetop cooking method with sequential preparation steps" ;
+        
+        tasklang:context [
+            rdf:type tasklang:Context ;
+            tasklang:domain "Cooking" ;
+            tasklang:constraints "Ready in 30 minutes, serves 4 people" ;
+            tasklang:reference "Sloppy Joes Recipe" ;
+            tasklang:hasParameters (
+                [
+                    rdf:type tasklang:Parameter ;
+                    tasklang:name "CookingTime" ;
+                    tasklang:value "30"^^xsd:integer ;
+                    tasklang:unit "minutes" ;
+                    tasklang:validRange "25-35 minutes"
+                ]
+                [
+                    rdf:type tasklang:Parameter ;
+                    tasklang:name "Servings" ;
+                    tasklang:value "4"^^xsd:integer ;
+                    tasklang:unit "people" ;
+                    tasklang:validRange "2-6 people"
+                ]
+                [
+                    rdf:type tasklang:Parameter ;
+                    tasklang:name "SimmerTime" ;
+                    tasklang:value "20"^^xsd:integer ;
+                    tasklang:unit "minutes" ;
+                    tasklang:validRange "15-20 minutes"
+                ]
+            )
+        ]
+    ] ;
+    
+    # Quality criteria section
+    tasklang:hasQualityCriteria (
+        "Texture: Meat should be well-cooked and sauce should be thick"
+        "Taste: Savory with balanced tomato flavor" 
+        "Appearance: Saucy but not runny when served on buns"
+    ) ;
+    
+    # Outputs section
+    tasklang:hasOutputs [
+        rdf:type tasklang:Outputs ;
+        tasklang:finalProduct "Sloppy Joes served on toasted hamburger buns" ;
+        tasklang:secondaryOutputs (
+            "Sloppy Joes mixture can be served over bannock, bread, rice, or potatoes"
+        )
+    ] .
+
+# Method Definition for Sloppy Joes
+recipe:SloppyJoesMethod rdf:type tasklang:Method ;
+    rdfs:label "Sloppy Joes Preparation Method" ;
+    tasklang:hasURI <http://example.org/methods/SloppyJoesPreparation> ;
+    tasklang:domainReference <http://domain-specific-ontology.org/concept/HomeStyleCooking> ;
+    
+    tasklang:domain "Home Cooking" ;
+    tasklang:description "A method for preparing Sloppy Joes with ground beef, vegetables, and tomato sauce" ;
+    tasklang:reference "Traditional home cooking recipe" ;
+    
+    tasklang:hasPrerequisites (
+        [ 
+            rdfs:label "Kitchen with stove" ; 
+            tasklang:importance "Critical" 
+        ]
+        [
+            rdfs:label "Large frying pan" ; 
+            tasklang:importance "Critical" 
+        ]
+        [
+            rdfs:label "Small bowl for mixing cornstarch" ; 
+            tasklang:importance "Important" 
+        ]
+        [
+            rdfs:label "Plates for serving" ; 
+            tasklang:importance "Important" 
+        ]
+    ) ;
+    
+    # Steps section
+    tasklang:hasSteps (
+        # Step 1: Cook beef and vegetables
+        [
+            rdf:type tasklang:Task ;
+            rdfs:label "Cook Beef and Vegetables" ;
+            tasklang:domainTechnique <http://domain-specific-ontology.org/techniques/Sauteing> ;
+            
+            tasklang:inputs ( "Ground beef" "Onion" "Celery" "Large frypan" ) ;
+            tasklang:action "Turn on the stove to medium-high heat. Cook and stir beef, onion and celery in a large frypan. When meat is no longer pink, drain off fat." ;
+            tasklang:notes "Properly draining the fat will result in a healthier dish and prevent the sauce from becoming too greasy." ;
+            tasklang:duration "5-7 minutes" ;
+            tasklang:output "Cooked beef and vegetables with fat drained" ;
+            
+            tasklang:hasValidationRules [
+                rdf:type tasklang:ValidationRule ;
+                rdfs:label "MeatCookingCheck" ;
+                tasklang:description "Beef should be completely browned with no pink visible"
+            ] ;
+            
+            tasklang:hasParameters [
+                tasklang:name "HeatLevel" ;
+                tasklang:value "Medium-high" ;
+                tasklang:measurement "Stove dial setting or flame intensity"
+            ]
+        ]
+        
+        # Step 2: Add sauces
+        [
+            rdf:type tasklang:Task ;
+            rdfs:label "Add Sauces" ;
+            
+            tasklang:action "Stir in (pre-made) Homestyle Tomato Sauce with Herbs and Worcestershire sauce" ;
+            tasklang:notes "Ensure sauce is evenly distributed throughout the beef mixture" ;
+            tasklang:duration "1 minute" ;
+            tasklang:output "Beef mixture with sauces incorporated"
+        ]
+        
+        # Step 3: Simmer mixture
+        [
+            rdf:type tasklang:Task ;
+            rdfs:label "Simmer Mixture" ;
+            
+            tasklang:action "Cook and stir until mixture boils. Turn heat to low. Simmer and stir, uncovered, 15 to 20 minutes or until vegetables are tender. Stir several times." ;
+            tasklang:notes "Stirring occasionally prevents burning and ensures even cooking" ;
+            tasklang:duration "15-20 minutes" ;
+            tasklang:output "Simmered beef and sauce mixture with tender vegetables" ;
+            
+            tasklang:hasValidationRules [
+                rdf:type tasklang:ValidationRule ;
+                rdfs:label "VegetableTendernessCheck" ;
+                tasklang:description "Vegetables should be soft when pierced with a fork"
+            ]
+        ]
+        
+        # Step 4: Thicken sauce
+        [
+            rdf:type tasklang:Task ;
+            rdfs:label "Thicken Sauce" ;
+            
+            tasklang:action "Combine cornstarch and water in a small bowl. Stir into beef mixture. Cook and stir, until sauce has thickened, about 2 to 3 minutes. Add salt and pepper to taste." ;
+            tasklang:notes "Cornstarch mixture should be smooth with no lumps before adding to beef mixture" ;
+            tasklang:duration "2-3 minutes" ;
+            tasklang:output "Thickened Sloppy Joes mixture seasoned to taste" ;
+            
+            tasklang:hasValidationRules [
+                rdf:type tasklang:ValidationRule ;
+                rdfs:label "SauceConsistencyCheck" ;
+                tasklang:description "Sauce should coat the back of a spoon"
+            ]
+        ]
+        
+        # Step 5: Serve
+        [
+            rdf:type tasklang:Task ;
+            rdfs:label "Serve Sloppy Joes" ;
+            
+            tasklang:action "Put the toasted bun halves on plates. Spoon Sloppy Joes mixture over buns. Serve right away." ;
+            tasklang:notes "For best taste, serve immediately while hot" ;
+            tasklang:duration "1-2 minutes" ;
+            tasklang:output "Completed Sloppy Joes ready to eat"
+        ]
+    ) ;
+    
+    # Risks section
+    tasklang:hasRisks (
+        [
+            rdfs:label "Burning the mixture" ;
+            tasklang:description "Mixture can burn if heat is too high or not stirred regularly" ;
+            tasklang:severity "Medium" ;
+            tasklang:mitigation "Keep heat at appropriate level and stir frequently"
+        ]
+        [
+            rdfs:label "Under-thickened sauce" ;
+            tasklang:description "Sauce remains too thin if cornstarch mixture isn't properly incorporated" ;
+            tasklang:severity "Low" ;
+            tasklang:mitigation "Ensure cornstarch is fully dissolved in cold water before adding"
+        ]
+        [
+            rdfs:label "Food safety risk" ;
+            tasklang:description "Undercooked ground beef can cause foodborne illness" ;
+            tasklang:severity "High" ;
+            tasklang:mitigation "Ensure beef is completely cooked with no pink showing"
+        ]
+    ) ;
+    
+    # Validation rules section
+    tasklang:hasValidationRules (
+        [
+            rdf:type tasklang:ValidationRule ;
+            rdfs:label "ConsistencyRule" ;
+            tasklang:description "IF sauce is too thin THEN add more cornstarch mixture"
+        ]
+        [
+            rdf:type tasklang:ValidationRule ;
+            rdfs:label "TasteRule" ;
+            tasklang:description "IF mixture lacks flavor THEN add more salt and pepper"
+        ]
+    ) .
+
+# Strategy Definition for Sloppy Joes
+recipe:SloppyJoesStrategy rdf:type tasklang:Strategy ;
+    rdfs:label "Sloppy Joes Cooking Strategy" ;
+    tasklang:hasURI <http://example.org/strategies/SloppyJoesStrategy> ;
+    
+    tasklang:problem recipe:SloppyJoes ;
+    
+    tasklang:hasMethods (
+        [
+            rdfs:label "Standard Method" ;
+            tasklang:method recipe:SloppyJoesMethod ;
+            tasklang:domain "Home Cooking" ;
+            tasklang:context "Regular weeknight dinner preparation"
+        ]
+        [
+            rdfs:label "Alternative Protein Method" ;
+            tasklang:method <http://example.org/methods/AlternativeProteinSloppyJoes> ;
+            tasklang:domain "Home Cooking" ;
+            tasklang:context "When using ground chicken, turkey, or pork"
+        ]
+        [
+            rdfs:label "Alternative Serving Method" ;
+            tasklang:method <http://example.org/methods/AlternativeServingSloppyJoes> ;
+            tasklang:domain "Home Cooking" ;
+            tasklang:context "When serving over bannock, bread slice, rice, or potatoes"
+        ]
+    ) ;
+    
+    tasklang:hasSelectionRules (
+        [
+            rdf:type tasklang:SelectionRule ;
+            tasklang:condition "Using ground beef as specified in recipe" ;
+            tasklang:method recipe:SloppyJoesMethod ;
+            tasklang:justification "Standard method is optimized for beef"
+        ]
+        [
+            rdf:type tasklang:SelectionRule ;
+            tasklang:condition "Using ground chicken, turkey, or pork instead of beef" ;
+            tasklang:method <http://example.org/methods/AlternativeProteinSloppyJoes> ;
+            tasklang:justification "Alternative meats require adjusted cooking times and seasonings"
+        ]
+        [
+            rdf:type tasklang:SelectionRule ;
+            tasklang:condition "default" ;
+            tasklang:method recipe:SloppyJoesMethod ;
+            tasklang:justification "Standard method works for most applications"
+        ]
+    ) ;
+    
+    tasklang:hasStrategyNotes (
+        "This is a quick and easy family favourite that can be adapted to various preferences"
+        "Can be prepared in advance and reheated when needed"
+    ) ;
+    
+    tasklang:hasDomainContext [
+        rdf:type tasklang:DomainContext ;
+        rdfs:label "Family Meal Context" ;
+        tasklang:description "Quick and easy meal suitable for families" ;
+        tasklang:provenance [
+            tasklang:source "Traditional North American home cooking" ;
+            tasklang:confidence "High" ;
+            tasklang:expert "Home cooking experts"
+        ]
+    ] .

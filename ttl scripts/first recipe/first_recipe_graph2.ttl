@@ -1,0 +1,128 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/> .
+
+ex:EasySeafoodBurgers a ex:Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    rdfs:comment "A simple recipe for seafood burgers." ;
+    ex:hasStep ex:Step1, ex:Step2, ex:Step3 ;
+    ex:hasIngredient ex:TunaOrSalmon, ex:Celery, ex:RelishOrPickles, ex:Eggs, ex:BreadCrumbs, ex:GreenOnions, ex:SaltAndPepper ;
+    ex:category "Seafood", "Burgers" .
+
+ex:Step1 a ex:Step ;
+    ex:order 1 ;
+    ex:usesUtensil ex:LargeMixingBowl ;
+    ex:hasInput ex:TunaOrSalmon, ex:Celery, ex:RelishOrPickles, ex:Eggs, ex:BreadCrumbs, ex:GreenOnions, ex:SaltAndPepper ;
+    ex:hasOutput ex:MixedIngredients ;
+    ex:action ex:Combine .
+
+ex:Step2 a ex:Step ;
+    ex:order 2 ;
+    ex:hasInput ex:MixedIngredients ;
+    ex:hasOutput ex:FourPatties ;
+    ex:action ex:Shape .
+
+ex:Step3 a ex:Step ;
+    ex:order 3 ;
+    ex:usesUtensil ex:NonStickPan, ex:Stove ;
+    ex:hasInput ex:FourPatties ;
+    ex:hasOutput ex:CookedPatties ;
+    ex:action ex:Cook .
+
+ex:TunaOrSalmon a ex:Ingredient ;
+    ex:foodItem ex:TunaOrSalmonItem ;
+    ex:amount ex:AmountTunaOrSalmon .
+
+ex:Celery a ex:Ingredient ;
+    ex:foodItem ex:CeleryItem ;
+    ex:amount ex:AmountCelery .
+
+ex:RelishOrPickles a ex:Ingredient ;
+    ex:foodItem ex:RelishOrPicklesItem ;
+    ex:amount ex:AmountRelishOrPickles .
+
+ex:Eggs a ex:Ingredient ;
+    ex:foodItem ex:EggsItem ;
+    ex:amount ex:AmountEggs .
+
+ex:BreadCrumbs a ex:Ingredient ;
+    ex:foodItem ex:BreadCrumbsItem ;
+    ex:amount ex:AmountBreadCrumbs .
+
+ex:GreenOnions a ex:Ingredient ;
+    ex:foodItem ex:GreenOnionsItem ;
+    ex:amount ex:AmountGreenOnions .
+
+ex:SaltAndPepper a ex:Ingredient ;
+    ex:foodItem ex:SaltAndPepperItem ;
+    ex:amount ex:AmountSaltAndPepper .
+
+ex:LargeMixingBowl a ex:Utensil ;
+    rdfs:label "Large Mixing Bowl" .
+
+ex:NonStickPan a ex:Utensil ;
+    rdfs:label "Non-stick Pan" .
+
+ex:Stove a ex:Utensil ;
+    rdfs:label "Stove" .
+
+ex:TunaOrSalmonItem a ex:FoodItem ;
+    ex:state "Drained" ;
+    a ex:Seafood .
+
+ex:CeleryItem a ex:FoodItem ;
+    ex:state "Finely chopped" ;
+    a ex:Vegetable .
+
+ex:EggsItem a ex:FoodItem ;
+    ex:state "Lightly beaten" ;
+    a ex:Dairy .
+
+ex:AmountTunaOrSalmon a ex:Quantity ;
+    rdfs:label "1 can (170g) tuna or 1 can (7 ½ oz/213g) salmon" .
+
+ex:AmountCelery a ex:Quantity ;
+    rdfs:label "¼ cup (60mL)" .
+
+ex:AmountRelishOrPickles a ex:Quantity ;
+    rdfs:label "2 Tbsp (30mL)" .
+
+ex:AmountEggs a ex:Quantity ;
+    rdfs:label "2 eggs" .
+
+ex:AmountBreadCrumbs a ex:Quantity ;
+    rdfs:label "½ cup (125mL)" .
+
+ex:AmountGreenOnions a ex:Quantity ;
+    rdfs:label "2 green onions" .
+
+ex:AmountSaltAndPepper a ex:Quantity ;
+    rdfs:label "To taste" .
+
+ex:Combine a ex:Action ;
+    rdfs:label "Combine" .
+
+ex:Shape a ex:Action ;
+    rdfs:label "Shape" .
+
+ex:Cook a ex:Action ;
+    rdfs:label "Cook" .
+
+ex:Seafood a ex:FoodType ;
+    rdfs:label "Seafood" .
+
+ex:Vegetable a ex:FoodType ;
+    rdfs:label "Vegetable" .
+
+ex:Condiment a ex:FoodType ;
+    rdfs:label "Condiment" .
+
+ex:Dairy a ex:FoodType ;
+    rdfs:label "Dairy" .
+
+ex:Bread a ex:FoodType ;
+    rdfs:label "Bread" .
+
+ex:Seasoning a ex:FoodType ;
+    rdfs:label "Seasoning" .
+

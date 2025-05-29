@@ -1,0 +1,124 @@
+@prefix : <http://example.org/recipes#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:SalmonPotatoDish rdf:type :Recipe ;
+    :label "Salmon & Potato Dish" ;
+    :description "A delicious dish made with salmon and potatoes." ;
+    :steps (:Step1 :Step2 :Step3 :Step4) ;
+    :ingredients (:IngredientSalmon :IngredientPepper :IngredientCheese :IngredientMashedPotato) ;
+    :categories ("Dinner" "Seafood" "Comfort Food") .
+
+:Step1 rdf:type :Step ;
+    :order 1 ;
+    :utensils (:UtensilBakingDish) ;
+    :inputs (:FoodItemSalmon) ;
+    :outputs (:FoodItemMashedSalmon) ;
+    :Action :ActionMash .
+
+:Step2 rdf:type :Step ;
+    :order 2 ;
+    :utensils (:UtensilBakingDish) ;
+    :inputs (:FoodItemMashedSalmon :FoodItemPepper :FoodItemCheese) ;
+    :outputs (:FoodItemSeasonedSalmon) ;
+    :Action :ActionSprinkle .
+
+:Step3 rdf:type :Step ;
+    :order 3 ;
+    :utensils (:UtensilBakingDish) ;
+    :inputs (:FoodItemSeasonedSalmon :FoodItemMashedPotato) ;
+    :outputs (:FoodItemLayeredDish) ;
+    :Action :ActionSpread .
+
+:Step4 rdf:type :Step ;
+    :order 4 ;
+    :utensils (:UtensilBakingDish) ;
+    :inputs (:FoodItemLayeredDish) ;
+    :outputs (:FoodItemBakedDish) ;
+    :Action :ActionBake .
+
+:IngredientSalmon rdf:type :Ingredient ;
+    :alternatives (:AlternativeSalmon) .
+
+:IngredientPepper rdf:type :Ingredient ;
+    :alternatives (:AlternativePepper) .
+
+:IngredientCheese rdf:type :Ingredient ;
+    :alternatives (:AlternativeCheese) .
+
+:IngredientMashedPotato rdf:type :Ingredient ;
+    :alternatives (:AlternativeMashedPotato) .
+
+:AlternativeSalmon rdf:type :Alternative ;
+    :food_item :FoodItemSalmon ;
+    :amount :Quantity1Can .
+
+:AlternativePepper rdf:type :Alternative ;
+    :food_item :FoodItemPepper ;
+    :amount :QuantityPinch .
+
+:AlternativeCheese rdf:type :Alternative ;
+    :food_item :FoodItemCheese ;
+    :amount :Quantity1Cup .
+
+:AlternativeMashedPotato rdf:type :Alternative ;
+    :food_item :FoodItemMashedPotato ;
+    :amount :Quantity2Cups .
+
+:UtensilBakingDish rdf:type :Utensil ;
+    :label "Small baking dish" .
+
+:UtensilNonstickPan rdf:type :Utensil ;
+    :label "Nonstick pan" .
+
+:FoodItemSalmon rdf:type :FoodItem ;
+    :state "canned" .
+
+:FoodItemMashedSalmon rdf:type :FoodItem ;
+    :state "mashed" .
+
+:FoodItemPepper rdf:type :FoodItem ;
+    :state "raw" .
+
+:FoodItemCheese rdf:type :FoodItem ;
+    :state "shredded" .
+
+:FoodItemMashedPotato rdf:type :FoodItem ;
+    :state "mashed" .
+
+:FoodItemSeasonedSalmon rdf:type :FoodItem ;
+    :state "seasoned" .
+
+:FoodItemLayeredDish rdf:type :FoodItem ;
+    :state "layered" .
+
+:FoodItemBakedDish rdf:type :FoodItem ;
+    :state "baked" .
+
+:ActionMash rdf:type :Action ;
+    :label "Mash" ;
+    :description "Mash the salmon with the bones." .
+
+:ActionSprinkle rdf:type :Action ;
+    :label "Sprinkle" ;
+    :description "Sprinkle with pepper and cheese." .
+
+:ActionSpread rdf:type :Action ;
+    :label "Spread" ;
+    :description "Spread the mashed potato on top." .
+
+:ActionBake rdf:type :Action ;
+    :label "Bake" ;
+    :description "Bake in the oven or microwave." .
+
+:Quantity1Can rdf:type :Quantity ;
+    :value "1 can (7 ½ oz/213 g)" .
+
+:QuantityPinch rdf:type :Quantity ;
+    :value "Pinch" .
+
+:Quantity1Cup rdf:type :Quantity ;
+    :value "1 cup (250 mL)" .
+
+:Quantity2Cups rdf:type :Quantity ;
+    :value "2 cups (500 mL)" .

@@ -1,0 +1,186 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix recipe: <http://example.org/recipe/> .
+@prefix food: <http://example.org/food/> .
+
+# Problem Definition
+<http://example.org/problems/SeafoodBurgerPreparation> a tasklang:Problem ;
+    rdfs:label "Seafood Burger Preparation" ;
+    tasklang:hasDescription "Preparation of easy seafood burgers using canned tuna or salmon" ;
+    tasklang:hasGoal "Create 4 delicious seafood burger patties ready to be served" ;
+    tasklang:hasInput [
+        a tasklang:Resource ;
+        rdfs:label "Tuna" ;
+        tasklang:description "Canned tuna, drained" ;
+        tasklang:quantity "1 can" ;
+        tasklang:measurement "170g" ;
+        tasklang:alternativeTo food:Salmon
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Salmon" ;
+        tasklang:description "Canned salmon, drained, skin and large bones removed" ;
+        tasklang:quantity "1 can" ;
+        tasklang:measurement "213g (7 ½ oz)" ;
+        tasklang:alternativeTo food:Tuna
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Celery" ;
+        tasklang:description "Finely chopped celery" ;
+        tasklang:quantity "¼ cup" ;
+        tasklang:measurement "60mL"
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Relish" ;
+        tasklang:description "Relish or chopped pickles" ;
+        tasklang:quantity "2 Tbsp" ;
+        tasklang:measurement "30mL"
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Eggs" ;
+        tasklang:description "Lightly beaten eggs" ;
+        tasklang:quantity "2" ;
+        tasklang:measurement "units"
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Bread crumbs" ;
+        tasklang:description "Bread crumbs" ;
+        tasklang:quantity "½ cup" ;
+        tasklang:measurement "125mL"
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Green onions" ;
+        tasklang:description "Chopped green onions" ;
+        tasklang:quantity "2" ;
+        tasklang:measurement "units"
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Salt" ;
+        tasklang:description "Salt" ;
+        tasklang:quantity "To taste" ;
+        tasklang:measurement ""
+    ], [
+        a tasklang:Resource ;
+        rdfs:label "Pepper" ;
+        tasklang:description "Pepper" ;
+        tasklang:quantity "To taste" ;
+        tasklang:measurement ""
+    ] ;
+    tasklang:hasContext [
+        a tasklang:Context ;
+        tasklang:domain "Cooking" ;
+        tasklang:constraints "Quick meal, Ready in 10 minutes" ;
+        tasklang:reference "Easy Seafood Burgers Recipe" ;
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "ServingSize" ;
+            tasklang:value "4"^^xsd:integer ;
+            tasklang:unit "people" ;
+            tasklang:validRange "4-6 people"
+        ], [
+            a tasklang:Parameter ;
+            tasklang:name "PrepTime" ;
+            tasklang:value "10"^^xsd:integer ;
+            tasklang:unit "minutes" ;
+            tasklang:validRange "10-15 minutes"
+        ]
+    ] ;
+    tasklang:hasQualityCriteria "Patties should be golden brown on both sides",
+                              "Patties should hold together well when cooking" ;
+    tasklang:hasFinalProduct "4 seafood burger patties" ;
+    tasklang:hasSecondaryOutput "Can be served on whole wheat toast, bannock, or a bun" .
+
+# Method Definition
+<http://example.org/methods/SeafoodBurgerMethod> a tasklang:Method ;
+    rdfs:label "Seafood Burger Preparation Method" ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Method for preparing seafood burgers from canned fish" ;
+    tasklang:reference "Easy Seafood Burgers Recipe" ;
+    tasklang:hasPrerequisite [
+        rdfs:label "Required ingredients" ;
+        tasklang:importance "Critical"
+    ], [
+        rdfs:label "Non-stick pan" ;
+        tasklang:importance "Important"
+    ], [
+        rdfs:label "Mixing bowl" ;
+        tasklang:importance "Critical"
+    ] ;
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Mix Ingredients" ;
+        tasklang:taskId "1" ;
+        tasklang:inputs "All ingredients" ;
+        tasklang:action "In a large mixing bowl, combine all ingredients" ;
+        tasklang:duration "3 minutes" ;
+        tasklang:output "Mixed seafood burger mixture" ;
+        tasklang:validationRule "Mixture should be well combined and slightly sticky"
+    ], [
+        a tasklang:Task ;
+        rdfs:label "Form Patties" ;
+        tasklang:taskId "2" ;
+        tasklang:inputs "Mixed seafood burger mixture" ;
+        tasklang:action "Shape into 4 patties" ;
+        tasklang:duration "2 minutes" ;
+        tasklang:output "4 raw seafood burger patties" ;
+        tasklang:validationRule "Patties should hold together and be of similar size"
+    ], [
+        a tasklang:Task ;
+        rdfs:label "Cook Patties" ;
+        tasklang:taskId "3" ;
+        tasklang:inputs "4 raw seafood burger patties" ;
+        tasklang:action "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side" ;
+        tasklang:duration "6 minutes" ;
+        tasklang:output "4 cooked seafood burger patties" ;
+        tasklang:validationRule "Patties should be golden brown on both sides" ;
+        tasklang:hasParameter [
+            tasklang:name "HeatLevel" ;
+            tasklang:value "Medium-high" ;
+            tasklang:measurement "Stove setting"
+        ], [
+            tasklang:name "CookingTime" ;
+            tasklang:value "3"^^xsd:integer ;
+            tasklang:measurement "Minutes per side"
+        ]
+    ] ;
+    tasklang:hasRisk [
+        rdfs:label "Patties falling apart" ;
+        tasklang:severity "Medium" ;
+        tasklang:mitigation "Ensure eggs and breadcrumbs are well mixed, handle patties gently"
+    ], [
+        rdfs:label "Burning patties" ;
+        tasklang:severity "Medium" ;
+        tasklang:mitigation "Monitor heat level and cooking time carefully"
+    ] ;
+    tasklang:hasValidationRule "IF patties are golden brown on both sides THEN cooking is complete",
+                            "IF patties hold together when flipped THEN mixture proportions are correct" .
+
+# Strategy Definition
+<http://example.org/strategies/SeafoodBurgerStrategy> a tasklang:Strategy ;
+    rdfs:label "Seafood Burger Preparation Strategy" ;
+    tasklang:forProblem <http://example.org/problems/SeafoodBurgerPreparation> ;
+    tasklang:hasMethod [
+        rdfs:label "Standard Seafood Burger Method" ;
+        tasklang:method <http://example.org/methods/SeafoodBurgerMethod> ;
+        tasklang:domain "Home Cooking" ;
+        tasklang:context "Quick meal preparation"
+    ] ;
+    tasklang:hasSelectionRule [
+        a tasklang:Rule ;
+        tasklang:condition "default" ;
+        tasklang:method <http://example.org/methods/SeafoodBurgerMethod> ;
+        tasklang:justification "Standard method for preparing seafood burgers"
+    ] ;
+    tasklang:strategyNote "This recipe makes 4 small patties and tastes just as delicious with canned salmon",
+                       "Serve on whole wheat toast, bannock, or a bun" ;
+    tasklang:hasDomainContext [
+        a tasklang:DomainContext ;
+        rdfs:label "Quick Meal Preparation" ;
+        tasklang:contextDescription "Recipe designed for quick and easy preparation with minimal ingredients" ;
+        tasklang:provenance [
+            tasklang:source "Easy Seafood Burgers Recipe" ;
+            tasklang:confidence "High" ;
+            tasklang:expert "Recipe Author"
+        ]
+    ] .

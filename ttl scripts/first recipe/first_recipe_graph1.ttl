@@ -1,0 +1,166 @@
+@prefix : <http://example.org/recipe#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers a :Recipe ;
+    :label "Easy Seafood Burgers" ;
+    :description "A simple recipe for seafood burgers." ;
+    :steps (:Step1 :Step2 :Step3) ;
+    :ingredients (:Ingredient1 :Ingredient2 :Ingredient3 :Ingredient4 :Ingredient5 :Ingredient6 :Ingredient7 :Ingredient8 :Ingredient9) ;
+    :categories ("Seafood" "Burger") .
+
+:Step1 a :Step ;
+    :order 1 ;
+    :utensils (:Bowl) ;
+    :inputs (:Ingredient1 :Ingredient2 :Ingredient3 :Ingredient4 :Ingredient5 :Ingredient6 :Ingredient7 :Ingredient8 :Ingredient9) ;
+    :outputs (:Mixture) ;
+    :Action :Mix .
+
+:Step2 a :Step ;
+    :order 2 ;
+    :inputs (:Mixture) ;
+    :outputs (:Patties) ;
+    :Action :Shape .
+
+:Step3 a :Step ;
+    :order 3 ;
+    :utensils (:Pan) ;
+    :inputs (:Patties) ;
+    :outputs (:CookedPatties) ;
+    :Action :Cook .
+
+:Ingredient1 a :Ingredient ;
+    :food_item :Tuna ;
+    :amount (:Quantity1) .
+
+:Ingredient2 a :Ingredient ;
+    :food_item :Salmon ;
+    :amount (:Quantity2) .
+
+:Ingredient3 a :Ingredient ;
+    :food_item :Celery ;
+    :amount (:Quantity3) .
+
+:Ingredient4 a :Ingredient ;
+    :food_item :Relish ;
+    :amount (:Quantity4) .
+
+:Ingredient5 a :Ingredient ;
+    :food_item :Eggs ;
+    :amount (:Quantity5) .
+
+:Ingredient6 a :Ingredient ;
+    :food_item :BreadCrumbs ;
+    :amount (:Quantity6) .
+
+:Ingredient7 a :Ingredient ;
+    :food_item :GreenOnions ;
+    :amount (:Quantity7) .
+
+:Ingredient8 a :Ingredient ;
+    :food_item :Salt ;
+    :amount (:Quantity8) .
+
+:Ingredient9 a :Ingredient ;
+    :food_item :Pepper ;
+    :amount (:Quantity9) .
+
+:Tuna a :FoodItem ;
+    :state "Drained" ;
+    :type :Protein .
+
+:Salmon a :FoodItem ;
+    :state "Drained, skin and large bones removed" ;
+    :type :Protein .
+
+:Celery a :FoodItem ;
+    :state "Finely chopped" ;
+    :type :Vegetable .
+
+:Relish a :FoodItem ;
+    :state "Chopped" ;
+    :type :Condiments .
+
+:Eggs a :FoodItem ;
+    :state "Lightly beaten" ;
+    :type :Protein .
+
+:BreadCrumbs a :FoodItem ;
+    :state "Dry" ;
+    :type :BreadProduct .
+
+:GreenOnions a :FoodItem ;
+    :state "Chopped" ;
+    :type :Vegetable .
+
+:Salt a :FoodItem ;
+    :state "Granulated" ;
+    :type :Seasoning .
+
+:Pepper a :FoodItem ;
+    :state "Ground" ;
+    :type :Seasoning .
+
+:Quantity1 a :Quantity ;
+    :value "1 can (170g)" .
+
+:Quantity2 a :Quantity ;
+    :value "1 can (7 ½ oz/213g)" .
+
+:Quantity3 a :Quantity ;
+    :value "¼ cup (60mL)" .
+
+:Quantity4 a :Quantity ;
+    :value "2 Tbsp (30mL)" .
+
+:Quantity5 a :Quantity ;
+    :value "2" .
+
+:Quantity6 a :Quantity ;
+    :value "½ cup (125mL)" .
+
+:Quantity7 a :Quantity ;
+    :value "2" .
+
+:Quantity8 a :Quantity ;
+    :value "To taste" .
+
+:Quantity9 a :Quantity ;
+    :value "To taste" .
+
+:Bowl a :Utensil ;
+    :label "Bowl" .
+
+:Pan a :Utensil ;
+    :label "Pan" .
+
+:Mix a :Action ;
+    :label "Mix" .
+
+:Shape a :Action ;
+    :label "Shape" .
+
+:Cook a :Action ;
+    :label "Cook" .
+
+:Seafood a :FoodType ;
+    :label "Seafood" .
+
+:Protein a :FoodType ;
+    :label "Protein" .
+
+:Vegetable a :FoodType ;
+    :label "Vegetable" .
+
+:Condiments a :FoodType ;
+    :label "Condiments" .
+
+:Dairy a :FoodType ;
+    :label "Dairy" .
+
+:BreadProduct a :FoodType ;
+    :label "Bread Product" .
+
+:Seasoning a :FoodType ;
+    :label "Seasoning" .
+

@@ -1,0 +1,142 @@
+@prefix : <http://example.org/recipes#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers rdf:type :Recipe ;
+    :label "Easy Seafood Burgers" ;
+    :description "Ready in 10 minutes. Serves 4 people." ;
+    :categories "Seafood" , "Burgers" ;
+    :steps :Step1 , :Step2 , :Step3 ;
+    :ingredients :Ingredient1 , :Ingredient2 , :Ingredient3 , :Ingredient4 , :Ingredient5 , :Ingredient6 , :Ingredient7 , :Ingredient8 .
+
+:Step1 rdf:type :Step ;
+    :order 1 ;
+    :utensils :MixingBowl ;
+    :inputs :TunaOrSalmon , :Celery , :Relish , :Eggs , :BreadCrumbs , :GreenOnions , :Salt , :Pepper ;
+    :outputs :Mixture ;
+    :Action :Combine .
+
+:Step2 rdf:type :Step ;
+    :order 2 ;
+    :utensils :Hands ;
+    :inputs :Mixture ;
+    :outputs :Patties ;
+    :Action :Shape .
+
+:Step3 rdf:type :Step ;
+    :order 3 ;
+    :utensils :Pan ;
+    :inputs :Patties ;
+    :outputs :CookedPatties ;
+    :Action :Cook .
+
+:Ingredient1 rdf:type :Ingredient ;
+    :food_item :TunaOrSalmon ;
+    :amount :Quantity1 .
+
+:Ingredient2 rdf:type :Ingredient ;
+    :food_item :Celery ;
+    :amount :Quantity2 .
+
+:Ingredient3 rdf:type :Ingredient ;
+    :food_item :Relish ;
+    :amount :Quantity3 .
+
+:Ingredient4 rdf:type :Ingredient ;
+    :food_item :Eggs ;
+    :amount :Quantity4 .
+
+:Ingredient5 rdf:type :Ingredient ;
+    :food_item :BreadCrumbs ;
+    :amount :Quantity5 .
+
+:Ingredient6 rdf:type :Ingredient ;
+    :food_item :GreenOnions ;
+    :amount :Quantity6 .
+
+:Ingredient7 rdf:type :Ingredient ;
+    :food_item :Salt ;
+    :amount :Quantity7 .
+
+:Ingredient8 rdf:type :Ingredient ;
+    :food_item :Pepper ;
+    :amount :Quantity8 .
+
+:TunaOrSalmon rdf:type :FoodItem ;
+    :state "drained" .
+
+:Celery rdf:type :FoodItem ;
+    :state "finely chopped" .
+
+:Relish rdf:type :FoodItem ;
+    :state "chopped" .
+
+:Eggs rdf:type :FoodItem ;
+    :state "lightly beaten" .
+
+:BreadCrumbs rdf:type :FoodItem ;
+    :state "raw" .
+
+:GreenOnions rdf:type :FoodItem ;
+    :state "chopped" .
+
+:Salt rdf:type :FoodItem ;
+    :state "raw" .
+
+:Pepper rdf:type :FoodItem ;
+    :state "raw" .
+
+:Mixture rdf:type :FoodItem ;
+    :state "mixed" .
+
+:Patties rdf:type :FoodItem ;
+    :state "shaped" .
+
+:CookedPatties rdf:type :FoodItem ;
+    :state "cooked" .
+
+:MixingBowl rdf:type :Utensil ;
+    :label "Mixing Bowl" .
+
+:Hands rdf:type :Utensil ;
+    :label "Hands" .
+
+:Pan rdf:type :Utensil ;
+    :label "Pan" .
+
+:Combine rdf:type :Action ;
+    :label "Combine" ;
+    :description "In a large mixing bowl, combine all ingredients." .
+
+:Shape rdf:type :Action ;
+    :label "Shape" ;
+    :description "Shape into 4 patties." .
+
+:Cook rdf:type :Action ;
+    :label "Cook" ;
+    :description "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side." .
+
+:Quantity1 rdf:type :Quantity ;
+    :value "1 can (170g) or 1 can (7 ½ oz/213g)" .
+
+:Quantity2 rdf:type :Quantity ;
+    :value "¼ cup (60mL)" .
+
+:Quantity3 rdf:type :Quantity ;
+    :value "2 Tbsp (30mL)" .
+
+:Quantity4 rdf:type :Quantity ;
+    :value "2" .
+
+:Quantity5 rdf:type :Quantity ;
+    :value "½ cup (125mL)" .
+
+:Quantity6 rdf:type :Quantity ;
+    :value "2" .
+
+:Quantity7 rdf:type :Quantity ;
+    :value "to taste" .
+
+:Quantity8 rdf:type :Quantity ;
+    :value "to taste" .
+

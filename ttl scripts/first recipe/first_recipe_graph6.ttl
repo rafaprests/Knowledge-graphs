@@ -1,0 +1,169 @@
+@prefix : <http://example.org/recipe#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers rdf:type :Recipe ;
+    :label "Easy Seafood Burgers" ;
+    :description "A simple and delicious seafood burger recipe." ;
+    :steps :Step1 , :Step2 , :Step3 ;
+    :ingredients :IngredientTunaOrSalmon , :IngredientCelery , :IngredientRelishOrPickles , :IngredientEggs , :IngredientBreadCrumbs , :IngredientGreenOnions , :IngredientSaltAndPepper .
+
+:Step1 rdf:type :Step ;
+    :order 1 ;
+    :utensils :UtensilLargeMixingBowl ;
+    :inputs :FoodItemTunaOrSalmonDrained , :FoodItemCeleryChopped , :FoodItemRelishOrPickles , :FoodItemEggsBeaten , :FoodItemBreadCrumbs , :FoodItemGreenOnionsChopped , :FoodItemSalt , :FoodItemPepper ;
+    :outputs :FoodItemMixture ;
+    :Action :ActionCombine .
+
+:Step2 rdf:type :Step ;
+    :order 2 ;
+    :utensils :UtensilLargeMixingBowl ;
+    :inputs :FoodItemMixture ;
+    :outputs :FoodItemPatties ;
+    :Action :ActionShape .
+
+:Step3 rdf:type :Step ;
+    :order 3 ;
+    :utensils :UtensilNonStickPan , :UtensilStove ;
+    :inputs :FoodItemPatties ;
+    :outputs :FoodItemCookedPatties ;
+    :Action :ActionCook .
+
+:IngredientTunaOrSalmon rdf:type :Ingredient ;
+    :alternatives :AlternativeTuna , :AlternativeSalmon .
+
+:IngredientCelery rdf:type :Ingredient ;
+    :alternatives :AlternativeCelery .
+
+:IngredientRelishOrPickles rdf:type :Ingredient ;
+    :alternatives :AlternativeRelishOrPickles .
+
+:IngredientEggs rdf:type :Ingredient ;
+    :alternatives :AlternativeEggs .
+
+:IngredientBreadCrumbs rdf:type :Ingredient ;
+    :alternatives :AlternativeBreadCrumbs .
+
+:IngredientGreenOnions rdf:type :Ingredient ;
+    :alternatives :AlternativeGreenOnions .
+
+:IngredientSaltAndPepper rdf:type :Ingredient ;
+    :alternatives :AlternativeSalt , :AlternativePepper .
+
+:AlternativeTuna rdf:type :Alternative ;
+    :food_item :FoodItemTunaDrained ;
+    :amount :Quantity170g .
+
+:AlternativeSalmon rdf:type :Alternative ;
+    :food_item :FoodItemSalmonDrained ;
+    :amount :Quantity213g .
+
+:AlternativeCelery rdf:type :Alternative ;
+    :food_item :FoodItemCeleryChopped ;
+    :amount :Quantity60mL .
+
+:AlternativeRelishOrPickles rdf:type :Alternative ;
+    :food_item :FoodItemRelishOrPickles ;
+    :amount :Quantity30mL .
+
+:AlternativeEggs rdf:type :Alternative ;
+    :food_item :FoodItemEggsBeaten ;
+    :amount :Quantity2 .
+
+:AlternativeBreadCrumbs rdf:type :Alternative ;
+    :food_item :FoodItemBreadCrumbs ;
+    :amount :Quantity125mL .
+
+:AlternativeGreenOnions rdf:type :Alternative ;
+    :food_item :FoodItemGreenOnionsChopped ;
+    :amount :Quantity2 .
+
+:AlternativeSalt rdf:type :Alternative ;
+    :food_item :FoodItemSalt ;
+    :amount :QuantityToTaste .
+
+:AlternativePepper rdf:type :Alternative ;
+    :food_item :FoodItemPepper ;
+    :amount :QuantityToTaste .
+
+:UtensilLargeMixingBowl rdf:type :Utensil ;
+    :label "Large Mixing Bowl" .
+
+:UtensilNonStickPan rdf:type :Utensil ;
+    :label "Non-stick Pan" .
+
+:UtensilStove rdf:type :Utensil ;
+    :label "Stove" .
+
+:FoodItemTunaOrSalmonDrained rdf:type :FoodItem ;
+    :state "drained" .
+
+:FoodItemTunaDrained rdf:type :FoodItem ;
+    :state "drained" .
+
+:FoodItemSalmonDrained rdf:type :FoodItem ;
+    :state "drained" .
+
+:FoodItemCeleryChopped rdf:type :FoodItem ;
+    :state "chopped" .
+
+:FoodItemRelishOrPickles rdf:type :FoodItem ;
+    :state "raw" .
+
+:FoodItemEggsBeaten rdf:type :FoodItem ;
+    :state "beaten" .
+
+:FoodItemBreadCrumbs rdf:type :FoodItem ;
+    :state "raw" .
+
+:FoodItemGreenOnionsChopped rdf:type :FoodItem ;
+    :state "chopped" .
+
+:FoodItemSalt rdf:type :FoodItem ;
+    :state "raw" .
+
+:FoodItemPepper rdf:type :FoodItem ;
+    :state "raw" .
+
+:FoodItemMixture rdf:type :FoodItem ;
+    :state "mixed" .
+
+:FoodItemPatties rdf:type :FoodItem ;
+    :state "shaped" .
+
+:FoodItemCookedPatties rdf:type :FoodItem ;
+    :state "cooked" .
+
+:ActionCombine rdf:type :Action ;
+    :label "Combine" ;
+    :description "Combine all ingredients in a large mixing bowl." .
+
+:ActionShape rdf:type :Action ;
+    :label "Shape" ;
+    :description "Shape the mixture into 4 patties." .
+
+:ActionCook rdf:type :Action ;
+    :label "Cook" ;
+    :description "Cook patties in a non-stick pan over medium-high heat until golden brown, about 3 minutes per side." .
+
+:Quantity170g rdf:type :Quantity ;
+    :value "170g" .
+
+:Quantity213g rdf:type :Quantity ;
+    :value "213g" .
+
+:Quantity60mL rdf:type :Quantity ;
+    :value "60mL" .
+
+:Quantity30mL rdf:type :Quantity ;
+    :value "30mL" .
+
+:Quantity125mL rdf:type :Quantity ;
+    :value "125mL" .
+
+:Quantity2 rdf:type :Quantity ;
+    :value "2" .
+
+:QuantityToTaste rdf:type :Quantity ;
+    :value "to taste" .
+

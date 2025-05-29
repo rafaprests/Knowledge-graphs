@@ -1,0 +1,180 @@
+@prefix : <http://example.org/recipes#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:EasySeafoodBurgers a :Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    :description "The name of the recipe." ;
+    :steps (:Step1 :Step2 :Step3) ;
+    :ingredients (:TunaOrSalmon :Celery :RelishOrPickles :Eggs :BreadCrumbs :GreenOnions :SaltAndPepper) ;
+    :categories ("Seafood" "Burgers" "Quick") .
+
+:Step1 a :Step ;
+    :order 1 ;
+    :utensils (:LargeMixingBowl) ;
+    :inputs (:TunaOrSalmon :Celery :RelishOrPickles :Eggs :BreadCrumbs :GreenOnions :SaltAndPepper) ;
+    :outputs (:Mixture) ;
+    :action [
+        a :Action ;
+        rdfs:label "Combine" ;
+        :description "Combine all ingredients in a large mixing bowl."
+    ] .
+
+:Step2 a :Step ;
+    :order 2 ;
+    :utensils () ;
+    :inputs (:Mixture) ;
+    :outputs (:Patties) ;
+    :action [
+        a :Action ;
+        rdfs:label "Shape" ;
+        :description "Shape the mixture into 4 patties."
+    ] .
+
+:Step3 a :Step ;
+    :order 3 ;
+    :utensils (:NonStickPan :Stove) ;
+    :inputs (:Patties) ;
+    :outputs (:CookedPatties) ;
+    :action [
+        a :Action ;
+        rdfs:label "Cook" ;
+        :description "Cook patties in a non-stick pan over medium-high heat until golden brown, about 3 minutes per side."
+    ] .
+
+:TunaOrSalmon a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :state "Drained" ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Tuna"
+        ]
+    ], [
+        a :FoodItem ;
+        :state "Drained, skin and large bones removed" ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Salmon"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "1 can (170g)"
+    ], [
+        a :Quantity ;
+        :value "1 can (7 ½ oz/213g)"
+    ] .
+
+:Celery a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :state "Finely chopped" ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Celery"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "¼ cup (60mL)"
+    ] .
+
+:RelishOrPickles a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Relish"
+        ]
+    ], [
+        a :FoodItem ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Chopped Pickles"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "2 Tbsp (30mL)"
+    ] .
+
+:Eggs a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :state "Lightly beaten" ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Eggs"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "2"
+    ] .
+
+:BreadCrumbs a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Bread Crumbs"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "½ cup (125mL)"
+    ] .
+
+:GreenOnions a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :state "Chopped" ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Green Onions"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "2"
+    ] .
+
+:SaltAndPepper a :Ingredient ;
+    :food_item [
+        a :FoodItem ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Salt"
+        ]
+    ], [
+        a :FoodItem ;
+        :foodType [
+            a :FoodType ;
+            rdfs:label "Pepper"
+        ]
+    ] ;
+    :amount [
+        a :Quantity ;
+        :value "To taste"
+    ] .
+
+:LargeMixingBowl a :Utensil ;
+    rdfs:label "Large Mixing Bowl" .
+
+:NonStickPan a :Utensil ;
+    rdfs:label "Non-stick Pan" .
+
+:Stove a :Utensil ;
+    rdfs:label "Stove" .
+
+:Mixture a :FoodItem ;
+    :state "Mixed" .
+
+:Patties a :FoodItem ;
+    :state "Shaped" .
+
+:CookedPatties a :FoodItem ;
+    :state "Cooked" .
+
