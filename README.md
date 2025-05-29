@@ -5,7 +5,7 @@ Research project exploring the use of LLMs and TaskLang to generate knowledge gr
 
 This project explores the use of Large Language Models (LLMs) to extract structured data from recipes and construct knowledge graphs using Neo4j.
 
-## Objectives
+## 🎯 Objectives
 - Investigate prompt engineering strategies for generating RDF.
 - Evaluate the consistency and quality of knowledge graphs with and without TaskLang.
 - Test reverse generation: producing recipes from RDF graphs.
@@ -27,7 +27,7 @@ This project explores the use of Large Language Models (LLMs) to extract structu
 - **`Cypher_Queries.txt`**  
   A set of **Cypher** queries used to initialize and manipulate the graphs within Neo4j.
 
-## Tools Used
+## 🛠 Tools Used
 - Neo4j (for graph creation and visualization)
 - OpenAI ChatGPT, Claude, Mistral, Perplexity (for generation)
 - TaskLang (prompt templating language)
