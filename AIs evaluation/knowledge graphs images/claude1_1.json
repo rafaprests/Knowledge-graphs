@@ -1,0 +1,408 @@
+﻿[
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "_GraphConfig"
+      ],
+      "properties": {
+        "_classLabel": "Class",
+        "_handleRDFTypes": 0,
+        "_subClassOfRel": "SCO",
+        "_handleMultival": 0,
+        "_objectPropertyLabel": "Relationship",
+        "_rangeRel": "RANGE",
+        "_domainRel": "DOMAIN",
+        "_keepLangTag": false,
+        "_keepCustomDataTypes": false,
+        "_classNamePropName": "name",
+        "_handleVocabUris": 0,
+        "_applyNeo4jNaming": false,
+        "_relNamePropName": "name",
+        "_dataTypePropertyLabel": "Property",
+        "_subPropertyOfRel": "SPO"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:0"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "_NsPrefDef"
+      ],
+      "properties": {
+        "ns0": "http://example.org/ontology/tasklang#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:1"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "4 cooked seafood burger patties",
+        "ns0__action": "Cook patties in the non-stick pan until both sides are golden brown, about 3 minutes per side",
+        "ns0__duration": "Approximately 6 minutes total (3 minutes per side)",
+        "rdfs__label": "Cook Patties",
+        "uri": "http://example.org/recipes/CookPatties"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:2"
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Resource",
+        "ns0__Parameter"
+      ],
+      "properties": {
+        "ns0__unit": "Minutes per side",
+        "rdfs__label": "Cooking time",
+        "ns0__value": 3,
+        "ns0__validRange": "Until golden brown",
+        "uri": "http://example.org/recipes/CookingTime"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:3"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "Resource",
+        "ns0__Risk"
+      ],
+      "properties": {
+        "ns0__severity": "Medium",
+        "ns0__mitigation": "Monitor cooking time closely, aim for golden brown color",
+        "rdfs__label": "Overcooking leading to dry patties",
+        "uri": "http://example.org/recipes/Overcooking"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:4"
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "ns0__amount": "1",
+        "ns0__description": "Canned fish, drained, skin and large bones removed",
+        "ns0__unit": "can",
+        "rdfs__label": "Canned salmon",
+        "ns0__quantity": "213g",
+        "uri": "http://example.org/recipes/Salmon"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:5"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Resource",
+        "ns0__Prerequisite"
+      ],
+      "properties": {
+        "ns0__importance": "Critical",
+        "rdfs__label": "If using salmon, skin and large bones removed",
+        "uri": "http://example.org/recipes/RemoveBones"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:6"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "ns0__amount": "2",
+        "ns0__description": "Chopped",
+        "rdfs__label": "Green onions",
+        "uri": "http://example.org/recipes/GreenOnions"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:7"
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "Resource",
+        "ns0__DomainContext"
+      ],
+      "properties": {
+        "rdfs__comment": "Family serving: Recipe yields 4 servings",
+        "rdfs__label": "Quick meal preparation: Recipe designed to be completed in 10 minutes",
+        "uri": "http://example.org/recipes/QuickMealContext"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:8"
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "rdfs__label": "Non-stick pan",
+        "uri": "http://example.org/recipes/NonStickPan"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:9"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "4 uncooked seafood burger patties",
+        "ns0__action": "Shape the mixture into 4 evenly sized patties",
+        "rdfs__label": "Form Patties",
+        "uri": "http://example.org/recipes/FormPatties"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:10"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "Mixed seafood burger mixture",
+        "ns0__action": "In a large mixing bowl, combine all ingredients thoroughly",
+        "rdfs__label": "Combine Ingredients",
+        "uri": "http://example.org/recipes/CombineIngredients"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:11"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "Heated non-stick pan",
+        "ns0__action": "Turn on the stove to medium-high heat",
+        "rdfs__label": "Heat Pan",
+        "uri": "http://example.org/recipes/HeatPan"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:12"
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "rdfs__label": "4 uncooked seafood burger patties",
+        "uri": "http://example.org/recipes/UncookedSeafoodBurgerPatties"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:13"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "ns0__alternativeQuantity": "½ cup",
+        "rdfs__label": "Bread crumbs",
+        "ns0__quantity": "125mL",
+        "uri": "http://example.org/recipes/BreadCrumbs"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:14"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "ns0__amount": "2",
+        "ns0__description": "Lightly beaten",
+        "rdfs__label": "Eggs",
+        "uri": "http://example.org/recipes/Eggs"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:15"
+    }
+  },
+  {
+    "n": {
+      "identity": 16,
+      "labels": [
+        "Resource",
+        "ns0__Parameter"
+      ],
+      "properties": {
+        "ns0__unit": "Stove setting",
+        "rdfs__label": "Cooking temperature",
+        "ns0__value": "Medium-high heat",
+        "uri": "http://example.org/recipes/CookingTemperature"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:16"
+    }
+  },
+  {
+    "n": {
+      "identity": 17,
+      "labels": [
+        "Resource",
+        "ns0__Problem"
+      ],
+      "properties": {
+        "ns0__description": "Creating simple and quick seafood burgers using canned fish",
+        "rdfs__label": "Easy Seafood Burgers",
+        "ns0__hasFinalProduct": "4 cooked seafood burger patties",
+        "ns0__hasDesign": "Quick mixing and pan-frying method",
+        "ns0__hasQualityCriterion": "Texture: Patties should hold together and have a firm consistency",
+        "uri": "http://example.org/recipes/Easy_Seafood_Burgers",
+        "ns0__hasSecondaryOutput": "Serving suggestion: Serve on whole wheat toast, bannock, or a bun",
+        "ns0__goal": "Prepare 4 seafood burger patties in 10 minutes"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:17"
+    }
+  },
+  {
+    "n": {
+      "identity": 18,
+      "labels": [
+        "Resource",
+        "ns0__Parameter"
+      ],
+      "properties": {
+        "ns0__unit": "Patties",
+        "rdfs__label": "Yield",
+        "ns0__value": 4,
+        "ns0__validRange": "4 small patties",
+        "uri": "http://example.org/recipes/Yield"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:18"
+    }
+  },
+  {
+    "n": {
+      "identity": 19,
+      "labels": [
+        "Resource",
+        "ns0__Method"
+      ],
+      "properties": {
+        "ns0__hasValidationRule": "IF patties hold together when flipped THEN mixture consistency is correct",
+        "ns0__description": "Simple mixing and pan-frying method for preparing seafood burgers",
+        "ns0__domain": "Home cooking",
+        "rdfs__label": "Easy Seafood Burger Preparation",
+        "uri": "http://example.org/recipes/Easy_Seafood_Burger_Preparation"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:19"
+    }
+  },
+  {
+    "n": {
+      "identity": 20,
+      "labels": [
+        "Resource",
+        "ns0__Prerequisite"
+      ],
+      "properties": {
+        "ns0__importance": "Critical",
+        "rdfs__label": "Ingredients gathered and measured",
+        "uri": "http://example.org/recipes/GatherIngredients"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:20"
+    }
+  },
+  {
+    "n": {
+      "identity": 21,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "rdfs__label": "Mixed seafood burger mixture",
+        "uri": "http://example.org/recipes/MixedSeafoodBurgerMixture"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:21"
+    }
+  },
+  {
+    "n": {
+      "identity": 22,
+      "labels": [
+        "Resource",
+        "ns0__Resource"
+      ],
+      "properties": {
+        "ns0__description": "To taste",
+        "rdfs__label": "Salt and pepper",
+        "uri": "http://example.org/recipes/SaltAndPepper"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:22"
+    }
+  },
+  {
+    "n": {
+      "identity": 23,
+      "labels": [
+        "Resource",
+        "ns0__SelectionRule"
+      ],
+      "properties": {
+        "ns0__condition": "default",
+        "ns0__justification": "This is the standard method for preparing these seafood burgers",
+        "uri": "http://example.org/recipes/DefaultMethodRule"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:23"
+    }
+  },
+  {
+    "n": {
+      "identity": 24,
+      "labels": [
+        "Resource",
+        "ns0__Provenance"
+      ],
+      "properties": {
+        "ns0__source": "Easy Seafood Burgers Recipe",
+        "ns0__expert": "Culinary arts",
+        "ns0__confidence": "High",
+        "uri": "http://example.org/recipes/RecipeProvenance"
+      },
+      "elementId": "4:5cd26705-0529-4982-b0d0-913954653bdb:24"
+    }
+  }
+]

@@ -1,0 +1,112 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix : <http://example.org/> .
+
+:Problem a rdfs:Class ;
+    rdfs:subClassOf tasklang:Problem .
+
+:Method a rdfs:Class ;
+    rdfs:subClassOf tasklang:Method .
+
+:Task a rdfs:Class ;
+    rdfs:subClassOf tasklang:Task .
+
+:Strategy a rdfs:Class ;
+    rdfs:subClassOf tasklang:Strategy .
+
+:Resource a rdfs:Class ;
+    rdfs:subClassOf tasklang:Resource .
+
+:Context a rdfs:Class ;
+    rdfs:subClassOf tasklang:Context .
+
+:Parameter a rdfs:Class ;
+    rdfs:subClassOf tasklang:Parameter .
+
+:ValidationRule a rdfs:Class ;
+    rdfs:subClassOf tasklang:ValidationRule .
+
+:Decision a rdfs:Class ;
+    rdfs:subClassOf tasklang:Decision .
+
+:Loop a rdfs:Class ;
+    rdfs:subClassOf tasklang:Loop .
+
+:ParallelTasks a rdfs:Class ;
+    rdfs:subClassOf tasklang:ParallelTasks .
+
+:DomainContext a rdfs:Class ;
+    rdfs:subClassOf tasklang:DomainContext .
+
+:hasDescription a rdf:Property .
+:hasGoal a rdf:Property .
+:hasInput a rdf:Property .
+:hasDesign a rdf:Property .
+:hasContext a rdf:Property .
+:hasQualityCriteria a rdf:Property .
+:hasOutput a rdf:Property .
+:hasDomain a rdf:Property .
+:hasReference a rdf:Property .
+:hasPrerequisite a rdf:Property .
+:hasStep a rdf:Property .
+:hasRisk a rdf:Property .
+:hasValidationRule a rdf:Property .
+:hasProblem a rdf:Property .
+:hasMethod a rdf:Property .
+:hasSelectionRule a rdf:Property .
+:hasStrategyNote a rdf:Property .
+:hasDomainContext a rdf:Property .
+
+:ProblemName a :Problem ;
+    :hasDescription "Description détaillée du problème à résoudre" ;
+    :hasGoal "Objectif principal ou résultat attendu" ;
+    :hasInput [ a :Resource ;
+        rdfs:label "Nom_Ressource_1" ;
+        :hasDescription "Description détaillée (quantité/mesure, qualité)" ] ;
+    :hasDesign "Description ou schéma du procédé/approche" ;
+    :hasContext [ a :Context ;
+        :hasDomain "Domaine d'application" ;
+        :hasParameter [ a :Parameter ;
+            rdfs:label "Nom_Paramètre_1" ;
+            :hasValue "Valeur"^^xsd:string ;
+            :hasUnit "Unité" ;
+            :hasValidRange "Intervalle valide" ] ] ;
+    :hasQualityCriteria "Critère_1: Description du critère et méthode d'évaluation" ;
+    :hasOutput [ rdfs:label "finalProduct" ;
+        rdf:value "Description du résultat final attendu" ] .
+
+:MethodName a :Method ;
+    :hasDomain "Domaine d'application" ;
+    :hasDescription "Description détaillée de la méthode" ;
+    :hasReference "Sources, références, ou origine de la méthode" ;
+    :hasPrerequisite [ rdfs:label "Prérequis_1" ;
+        :hasImportance "Critique/Important/Recommandé" ] ;
+    :hasStep [ a :Task ;
+        rdfs:label "Nom_Tâche_1" ;
+        :hasAction "Description détaillée de l'action à effectuer" ;
+        :hasNote "Informations complémentaires, astuces, conseils" ;
+        :hasDuration "Estimation du temps requis" ;
+        :hasOutput "Description du résultat de cette tâche" ;
+        :hasValidationRule [ a :ValidationRule ;
+            rdf:value "Règle_Validation_1: Description de la règle" ] ] ;
+    :hasRisk [ rdfs:label "Risque_1" ;
+        :hasDescription "Description du risque" ;
+        :hasSeverity "Haute/Moyenne/Basse" ;
+        :hasMitigation "Stratégie d'atténuation" ] .
+
+:StrategyName a :Strategy ;
+    :hasProblem :ProblemName ;
+    :hasMethod [ :hasMethodName :MethodName ;
+        :hasDomain "Domaine" ;
+        :hasContext "Contexte d'application" ] ;
+    :hasSelectionRule [ :hasCondition "Expression conditionnelle basée sur le contexte" ;
+        :hasMethod :MethodName ;
+        :hasJustification "Justification du choix de cette méthode" ] ;
+    :hasStrategyNote "Note_1: Information complémentaire sur la stratégie" ;
+    :hasDomainContext [ a :DomainContext ;
+        rdf:value "Contexte_1: Information sur le contexte domaine-spécifique" ;
+        :hasProvenance [ :hasSource "Source d'information" ;
+            :hasConfidence "Niveau de confiance" ;
+            :hasExpert "Expert du domaine ou source d'expertise" ] ] .

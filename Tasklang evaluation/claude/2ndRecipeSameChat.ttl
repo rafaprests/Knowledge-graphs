@@ -1,0 +1,263 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Problem Definition (The Recipe)
+recipe:SalmonPotatoDish a tasklang:Problem ;
+    rdfs:label "Salmon & Potato Dish" ;
+    tasklang:description "A layered dish with canned salmon and mashed potatoes" ;
+    tasklang:goal "Create a delicious salmon and potato casserole" ;
+    
+    # Inputs - Resources (Ingredients)
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Salmon" ;
+        tasklang:description "Can of pink or red salmon, drained" ;
+        tasklang:quantity "1 can (7 ½ oz/213 g)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Cheddar Cheese" ;
+        tasklang:description "Loosely packed, shredded cheddar cheese" ;
+        tasklang:quantity "1 cup (250 mL)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Mashed Potato" ;
+        tasklang:description "Leftover or fresh mashed potato" ;
+        tasklang:quantity "2 cups (500mL)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Pepper" ;
+        tasklang:description "Ground black pepper" ;
+        tasklang:quantity "Pinch"
+    ] ;
+    
+    # Context
+    tasklang:hasContext [
+        a tasklang:Context ;
+        tasklang:domain "Cooking" ;
+        tasklang:constraints "Can be prepared in oven or microwave" ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "Servings" ;
+            tasklang:value "2-3"^^xsd:string
+        ] ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "OvenTime" ;
+            tasklang:value "30"^^xsd:integer ;
+            tasklang:unit "minutes"
+        ] ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "MicrowaveTime" ;
+            tasklang:value "8"^^xsd:integer ;
+            tasklang:unit "minutes"
+        ]
+    ] ;
+    
+    # Outputs
+    tasklang:finalProduct "Baked salmon and potato casserole" ;
+    tasklang:secondaryOutput "Can also be formed into patties and fried" .
+
+# Method Definition - Oven Method
+recipe:SalmonPotatoDishOvenMethod a tasklang:Method ;
+    rdfs:label "Salmon & Potato Dish Oven Method" ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Method for preparing salmon and potato dish in the oven" ;
+    
+    # Preparation Steps
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Prepare Salmon" ;
+        tasklang:taskOrder "1"^^xsd:integer ;
+        tasklang:action "Mash the salmon with the bones. Put the salmon on the bottom of a small baking dish. Sprinkle it with pepper and half the shredded cheese." ;
+        tasklang:output "Salmon layer with cheese and pepper" ;
+        tasklang:inputs "Salmon, pepper, half of cheese"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Add Potato Layer" ;
+        tasklang:taskOrder "2"^^xsd:integer ;
+        tasklang:action "Spread the mashed potato on top of the salmon and cheese." ;
+        tasklang:output "Layered salmon and potato dish" ;
+        tasklang:inputs "Mashed potato, prepared salmon layer"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Add Cheese Topping" ;
+        tasklang:taskOrder "3"^^xsd:integer ;
+        tasklang:action "Sprinkle the rest of the cheese on top." ;
+        tasklang:output "Assembled dish ready for baking" ;
+        tasklang:inputs "Remaining cheese, layered dish"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Bake Dish" ;
+        tasklang:taskOrder "4"^^xsd:integer ;
+        tasklang:action "Bake in a 350°F (180°C) oven for 30 minutes." ;
+        tasklang:output "Baked salmon and potato dish" ;
+        tasklang:duration "30 minutes" ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "Temperature" ;
+            tasklang:value "350"^^xsd:integer ;
+            tasklang:unit "°F"
+        ]
+    ] ;
+    
+    # Validation Rules
+    tasklang:hasValidationRule [
+        a tasklang:ValidationRule ;
+        rdfs:label "CheeseMeltCheck" ;
+        tasklang:description "Cheese should be melted and slightly golden on top when properly baked"
+    ] ;
+    
+    # Risks
+    tasklang:hasRisk [
+        rdfs:label "Overcooking" ;
+        tasklang:description "Dish may become dry if overcooked" ;
+        tasklang:severity "Medium" ;
+        tasklang:mitigation "Monitor closely and remove when cheese is melted and lightly golden"
+    ] .
+
+# Method Definition - Microwave Method
+recipe:SalmonPotatoDishMicrowaveMethod a tasklang:Method ;
+    rdfs:label "Salmon & Potato Dish Microwave Method" ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Method for preparing salmon and potato dish in the microwave" ;
+    
+    # Preparation Steps (identical to oven method except final cooking)
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Prepare Salmon" ;
+        tasklang:taskOrder "1"^^xsd:integer ;
+        tasklang:action "Mash the salmon with the bones. Put the salmon on the bottom of a small microwave-safe dish. Sprinkle it with pepper and half the shredded cheese." ;
+        tasklang:output "Salmon layer with cheese and pepper" ;
+        tasklang:inputs "Salmon, pepper, half of cheese"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Add Potato Layer" ;
+        tasklang:taskOrder "2"^^xsd:integer ;
+        tasklang:action "Spread the mashed potato on top of the salmon and cheese." ;
+        tasklang:output "Layered salmon and potato dish" ;
+        tasklang:inputs "Mashed potato, prepared salmon layer"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Add Cheese Topping" ;
+        tasklang:taskOrder "3"^^xsd:integer ;
+        tasklang:action "Sprinkle the rest of the cheese on top." ;
+        tasklang:output "Assembled dish ready for microwaving" ;
+        tasklang:inputs "Remaining cheese, layered dish"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Microwave Dish" ;
+        tasklang:taskOrder "4"^^xsd:integer ;
+        tasklang:action "Microwave for 8 minutes." ;
+        tasklang:output "Cooked salmon and potato dish" ;
+        tasklang:duration "8 minutes"
+    ] .
+
+# Method Definition - Alternative Patty Method
+recipe:SalmonPotatoDishPattyMethod a tasklang:Method ;
+    rdfs:label "Salmon & Potato Dish Patty Method" ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Alternative method for making salmon and potato patties" ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Mix Ingredients" ;
+        tasklang:taskOrder "1"^^xsd:integer ;
+        tasklang:action "Mix mashed salmon, pepper, cheese and potato together" ;
+        tasklang:output "Mixed salmon and potato mixture"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Form Patties" ;
+        tasklang:taskOrder "2"^^xsd:integer ;
+        tasklang:action "Form the mixture into patties" ;
+        tasklang:output "Raw salmon and potato patties"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Fry Patties" ;
+        tasklang:taskOrder "3"^^xsd:integer ;
+        tasklang:action "Fry patties in a nonstick pan until golden brown on both sides" ;
+        tasklang:output "Fried salmon and potato patties"
+    ] .
+
+# Strategy
+recipe:SalmonPotatoDishStrategy a tasklang:Strategy ;
+    rdfs:label "Salmon & Potato Dish Strategy" ;
+    tasklang:targetProblem recipe:SalmonPotatoDish ;
+    
+    # Multiple methods
+    tasklang:hasMethod recipe:SalmonPotatoDishOvenMethod ;
+    tasklang:hasMethod recipe:SalmonPotatoDishMicrowaveMethod ;
+    tasklang:hasMethod recipe:SalmonPotatoDishPattyMethod ;
+    
+    # Selection Rules
+    tasklang:hasSelectionRule [
+        rdfs:label "Oven Method Selection" ;
+        tasklang:condition "If you have more time and prefer traditional baking" ;
+        tasklang:recommendedMethod recipe:SalmonPotatoDishOvenMethod ;
+        tasklang:justification "Oven baking provides more even cooking and better texture"
+    ] ;
+    
+    tasklang:hasSelectionRule [
+        rdfs:label "Microwave Method Selection" ;
+        tasklang:condition "If you need a quicker cooking method" ;
+        tasklang:recommendedMethod recipe:SalmonPotatoDishMicrowaveMethod ;
+        tasklang:justification "Microwave cooking is much faster but may not give the same texture"
+    ] ;
+    
+    tasklang:hasSelectionRule [
+        rdfs:label "Patty Method Selection" ;
+        tasklang:condition "If you prefer individual portions or a different texture" ;
+        tasklang:recommendedMethod recipe:SalmonPotatoDishPattyMethod ;
+        tasklang:justification "Patties offer a different presentation and texture option"
+    ] ;
+    
+    # Strategy Notes
+    tasklang:note "For a change, this dish can also be made into patties and fried in a nonstick pan" ;
+    
+    # Domain Context
+    tasklang:hasDomainContext [
+        a tasklang:DomainContext ;
+        tasklang:context "This recipe offers multiple cooking methods for different time constraints and preferences" ;
+        tasklang:provenance [
+            tasklang:source "Recipe document" ;
+            tasklang:confidence "High"
+        ]
+    ] .
+
+# Connections between Problem and Methods
+recipe:SalmonPotatoDish tasklang:canBeSolvedBy recipe:SalmonPotatoDishOvenMethod .
+recipe:SalmonPotatoDish tasklang:canBeSolvedBy recipe:SalmonPotatoDishMicrowaveMethod .
+recipe:SalmonPotatoDish tasklang:canBeSolvedBy recipe:SalmonPotatoDishPattyMethod .
+
+recipe:SalmonPotatoDishOvenMethod tasklang:solves recipe:SalmonPotatoDish .
+recipe:SalmonPotatoDishMicrowaveMethod tasklang:solves recipe:SalmonPotatoDish .
+recipe:SalmonPotatoDishPattyMethod tasklang:solves recipe:SalmonPotatoDish .

@@ -1,0 +1,83 @@
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix ex: <http://example.org/> .
+
+ex:Easy_Seafood_Burgers a tasklang:Problem ;
+    tasklang:description "Preparation of easy seafood burgers using canned tuna or salmon." ;
+    tasklang:goal "To prepare a quick and delicious seafood burger meal for four people." ;
+    tasklang:hasInput ex:Ingredient_1, ex:Ingredient_2, ex:Ingredient_3, ex:Ingredient_4, ex:Ingredient_5, ex:Ingredient_6, ex:Ingredient_7 ;
+    tasklang:hasQualityCriteria ex:Taste, ex:Texture, ex:CookingTime ;
+    tasklang:hasOutput ex:Final_Product, ex:Serving_Suggestion .
+
+ex:Ingredient_1 a tasklang:Resource ;
+    tasklang:name "Canned tuna or salmon" ;
+    tasklang:quantity "170g-213g" .
+
+ex:Ingredient_2 a tasklang:Resource ;
+    tasklang:name "Celery" ;
+    tasklang:quantity "1/4 cup, 60mL" .
+
+ex:Ingredient_3 a tasklang:Resource ;
+    tasklang:name "Relish or chopped pickles" ;
+    tasklang:quantity "2 Tbsp, 30mL" .
+
+ex:Ingredient_4 a tasklang:Resource ;
+    tasklang:name "Eggs" ;
+    tasklang:quantity "2" .
+
+ex:Ingredient_5 a tasklang:Resource ;
+    tasklang:name "Bread crumbs" ;
+    tasklang:quantity "1/2 cup, 125mL" .
+
+ex:Ingredient_6 a tasklang:Resource ;
+    tasklang:name "Green onions" ;
+    tasklang:quantity "2" .
+
+ex:Ingredient_7 a tasklang:Resource ;
+    tasklang:name "Salt and pepper" ;
+    tasklang:quantity "To taste" .
+
+ex:Taste a tasklang:QualityCriteria ;
+    tasklang:description "Well-seasoned, balanced flavors." .
+
+ex:Texture a tasklang:QualityCriteria ;
+    tasklang:description "Crispy on the outside, tender on the inside." .
+
+ex:CookingTime a tasklang:QualityCriteria ;
+    tasklang:description "Does not exceed 10 minutes." .
+
+ex:Final_Product a tasklang:Output ;
+    tasklang:description "Four cooked seafood burger patties." .
+
+ex:Serving_Suggestion a tasklang:Output ;
+    tasklang:description "Whole wheat toast, bannock, or bun." .
+
+ex:Cook_Seafood_Burgers a tasklang:Method ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Step-by-step process to prepare seafood burger patties and cook them on a stovetop." ;
+    tasklang:hasStep ex:Mix_Ingredients, ex:Shape_Patties, ex:Cook_Patties .
+
+ex:Mix_Ingredients a tasklang:Task ;
+    tasklang:action "Combine all ingredients in a large mixing bowl." ;
+    tasklang:duration "1-2 minutes" ;
+    tasklang:output "Homogeneous seafood mixture." .
+
+ex:Shape_Patties a tasklang:Task ;
+    tasklang:action "Divide the mixture into four equal parts and shape them into patties." ;
+    tasklang:duration "2 minutes" ;
+    tasklang:output "Four uniform seafood patties." .
+
+ex:Cook_Patties a tasklang:Task ;
+    tasklang:action "Heat the pan on medium-high and cook patties for about 3 minutes per side until golden brown." ;
+    tasklang:duration "6 minutes" ;
+    tasklang:output "Golden-brown seafood patties ready to be served." .
+
+ex:Quick_Seafood_Burger_Strategy a tasklang:Strategy ;
+    tasklang:problem ex:Easy_Seafood_Burgers ;
+    tasklang:hasMethod ex:Cook_Seafood_Burgers ;
+    tasklang:hasSelectionRule ex:Rule_1 .
+
+ex:Rule_1 a tasklang:SelectionRule ;
+    tasklang:condition "Limited time (<= 10 minutes)" ;
+    tasklang:method ex:Cook_Seafood_Burgers ;
+    tasklang:justification "Ensures meal can be prepared quickly and efficiently." .
+

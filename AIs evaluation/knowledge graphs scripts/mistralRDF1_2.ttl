@@ -1,0 +1,81 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/recipe#> .
+
+# Define the recipe
+ex:EasySeafoodBurgers a ex:Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    ex:readyIn "10 minutes" ;
+    ex:serves "4 people" ;
+    ex:hasIngredient ex:Tuna, ex:Celery, ex:Relish, ex:Eggs, ex:BreadCrumbs, ex:GreenOnions, ex:SaltAndPepper ;
+    ex:hasPreparationStep ex:CombineIngredients, ex:ShapePatties, ex:CookPatties ;
+    ex:hasTip ex:ServingSuggestion, ex:PattiesInfo .
+
+# Define ingredients
+ex:Tuna a ex:Ingredient ;
+    rdfs:label "Tuna" ;
+    ex:quantity "1 can (170g)" ;
+    ex:domain "Seafood" ;
+    ex:context "Main protein source" .
+
+ex:Celery a ex:Ingredient ;
+    rdfs:label "Celery" ;
+    ex:quantity "¼ cup (60mL)" ;
+    ex:domain "Vegetables" ;
+    ex:context "Adds texture and flavor" .
+
+ex:Relish a ex:Ingredient ;
+    rdfs:label "Relish" ;
+    ex:quantity "2 Tbsp (30mL)" ;
+    ex:domain "Condiments" ;
+    ex:context "Adds tangy flavor" .
+
+ex:Eggs a ex:Ingredient ;
+    rdfs:label "Eggs" ;
+    ex:quantity "2 eggs" ;
+    ex:domain "Dairy" ;
+    ex:context "Binding agent" .
+
+ex:BreadCrumbs a ex:Ingredient ;
+    rdfs:label "Bread Crumbs" ;
+    ex:quantity "½ cup (125mL)" ;
+    ex:domain "Baking" ;
+    ex:context "Adds structure and texture" .
+
+ex:GreenOnions a ex:Ingredient ;
+    rdfs:label "Green Onions" ;
+    ex:quantity "2 green onions" ;
+    ex:domain "Vegetables" ;
+    ex:context "Adds flavor" .
+
+ex:SaltAndPepper a ex:Ingredient ;
+    rdfs:label "Salt and Pepper" ;
+    ex:quantity "to taste" ;
+    ex:domain "Seasoning" ;
+    ex:context "Enhances overall flavor" .
+
+# Define preparation steps
+ex:CombineIngredients a ex:PreparationStep ;
+    rdfs:label "Combine Ingredients" ;
+    ex:domain "Cooking" ;
+    ex:context "Mixing" ;
+    ex:method "In a large mixing bowl, combine all ingredients." .
+
+ex:ShapePatties a ex:PreparationStep ;
+    rdfs:label "Shape Patties" ;
+    ex:domain "Cooking" ;
+    ex:context "Forming" ;
+    ex:method "Shape the mixture into 4 patties." .
+
+ex:CookPatties a ex:PreparationStep ;
+    rdfs:label "Cook Patties" ;
+    ex:domain "Cooking" ;
+    ex:context "Heat application" ;
+    ex:method "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side." .
+
+# Define tips
+ex:ServingSuggestion a ex:Tip ;
+    rdfs:label "Serve on whole wheat toast, bannock, or a bun." .
+
+ex:PattiesInfo a ex:Tip ;
+    rdfs:label "This recipe makes 4 small patties and tastes just as delicious with canned salmon." .

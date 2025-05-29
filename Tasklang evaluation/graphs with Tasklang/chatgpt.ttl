@@ -1,0 +1,58 @@
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix ex: <http://example.org/recipes#> .
+
+ex:EasySeafoodBurgers a tasklang:Problem ;
+    tasklang:description "A recipe for Easy Seafood Burgers." ;
+    tasklang:goal "Prepare a seafood-based burger meal." ;
+    tasklang:inputs [
+        tasklang:resources (
+            [ tasklang:name "Tuna" ; tasklang:quantity "170g (1 can)" ]
+            [ tasklang:name "Salmon" ; tasklang:quantity "213g (1 can)" ]
+            [ tasklang:name "Celery" ; tasklang:quantity "1/4 cup" ; tasklang:preparation "finely chopped" ]
+            [ tasklang:name "Relish" ; tasklang:quantity "2 Tbsp" ]
+            [ tasklang:name "ChoppedPickles" ; tasklang:quantity "2 Tbsp" ]
+            [ tasklang:name "Eggs" ; tasklang:quantity "2" ; tasklang:preparation "lightly beaten" ]
+            [ tasklang:name "BreadCrumbs" ; tasklang:quantity "1/2 cup" ]
+            [ tasklang:name "GreenOnions" ; tasklang:quantity "2" ; tasklang:preparation "chopped" ]
+            [ tasklang:name "Salt" ]
+            [ tasklang:name "Pepper" ]
+        )
+    ] ;
+    tasklang:context [
+        tasklang:domain "Cooking" ;
+        tasklang:constraints "Standard home kitchen equipment required." ;
+        tasklang:parameters (
+            [ tasklang:name "Servings" ; tasklang:value "4" ; tasklang:unit "people" ]
+            [ tasklang:name "CookingTime" ; tasklang:value "3" ; tasklang:unit "minutes per side" ]
+            [ tasklang:name "PreparationTime" ; tasklang:value "10" ; tasklang:unit "minutes" ]
+        )
+    ] ;
+    tasklang:qualityCriteria (
+        "Golden brown: Patties should be golden brown when cooked."
+    ) ;
+    tasklang:outputs [
+        tasklang:finalProduct "4 small seafood burger patties."
+    ] .
+
+ex:SeafoodBurgerPreparation a tasklang:Method ;
+    tasklang:description "Method to prepare and cook seafood burger patties." ;
+    tasklang:steps (
+        [ a tasklang:Task ;
+          tasklang:action "Combine all ingredients in a large mixing bowl." ;
+          tasklang:output "Burger mixture ready for shaping." ]
+        [ a tasklang:Task ;
+          tasklang:action "Shape mixture into 4 patties." ;
+          tasklang:output "4 formed patties." ]
+        [ a tasklang:Task ;
+          tasklang:action "Cook patties in a non-stick pan over medium-high heat until golden brown on both sides." ;
+          tasklang:duration "3 minutes per side" ;
+          tasklang:output "Cooked seafood burger patties." ]
+    ) .
+
+ex:ServingOptions a tasklang:Decision ;
+    tasklang:condition "Choice of serving method" ;
+    tasklang:options (
+        [ tasklang:option "WholeWheatToast" ; tasklang:then "Serve on whole wheat toast." ]
+        [ tasklang:option "Bannock" ; tasklang:then "Serve on bannock." ]
+        [ tasklang:option "Bun" ; tasklang:then "Serve on a bun." ]
+    ) .

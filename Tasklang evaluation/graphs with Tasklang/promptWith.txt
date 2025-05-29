@@ -1,0 +1,123 @@
+You are an expert in knowledge graphs, ontologies, and RDF Turtle syntax. Remember that commas are not allowed in Turtle syntax. Your task is to map text data about recipes to the predefined classes below. You should write the output in Turtle RDF syntax that models the recipe given in the text. You can infer relationship names from the classes. Separate options in a logical way. Structure all the existing knowledge according to the Tasklang attached in this message
+Entities and Descriptions
+Easy Seafood Burgers
+
+Description: The name of the recipe.
+Type: Recipe Name
+10 minutes
+
+Description: The preparation time for the recipe.
+Type: Time Duration
+4 people
+
+Description: The number of servings the recipe yields.
+Type: Quantity
+Tuna or Salmon
+
+Description: Main protein ingredients for the recipe.
+Type: Ingredient
+Sub-entities:
+Tuna
+Description: A type of fish used in the recipe.
+Type: Ingredient
+Salmon
+Description: An alternative type of fish used in the recipe.
+Type: Ingredient
+1 can (170g) tuna or can (7 ½ oz/213g) salmon, drained
+
+Description: The specific quantity and preparation of the main protein ingredient.
+Type: Ingredient Quantity
+¼ cup (60mL) celery, finely chopped
+
+Description: A vegetable ingredient with its quantity and preparation method.
+Type: Ingredient Quantity
+2 Tbsp (30mL) relish or chopped pickles
+
+Description: A condiment ingredient with its quantity.
+Type: Ingredient Quantity
+Sub-entities:
+Relish
+Description: A type of condiment used in the recipe.
+Type: Ingredient
+Chopped Pickles
+Description: An alternative type of condiment used in the recipe.
+Type: Ingredient
+2 eggs, lightly beaten
+
+Description: An ingredient with its quantity and preparation method.
+Type: Ingredient Quantity
+½ cup (125mL) bread crumbs
+
+Description: A binding ingredient with its quantity.
+Type: Ingredient Quantity
+2 green onions, chopped
+
+Description: A vegetable ingredient with its quantity and preparation method.
+Type: Ingredient Quantity
+Salt and pepper to taste
+
+Description: Seasoning ingredients.
+Type: Ingredient
+Sub-entities:
+Salt
+Description: A seasoning ingredient.
+Type: Ingredient
+Pepper
+Description: A seasoning ingredient.
+Type: Ingredient
+4 small patties
+
+Description: The form and quantity of the final product.
+Type: Quantity
+Whole wheat toast, bannock, or a bun
+
+Description: Suggested serving options for the burgers.
+Type: Serving Option
+Sub-entities:
+Whole Wheat Toast
+Description: A type of bread used for serving.
+Type: Serving Option
+Bannock
+Description: A type of bread used for serving.
+Type: Serving Option
+Bun
+Description: A type of bread used for serving.
+Type: Serving Option
+Large mixing bowl
+
+Description: A tool used for combining ingredients.
+Type: Tool
+Non-stick pan
+
+Description: A tool used for cooking the patties.
+Type: Tool
+Stove
+
+Description: A tool used for heating the pan.
+Type: Tool
+Medium-high heat
+
+Description: The temperature setting for cooking.
+Type: State
+Golden brown
+
+Description: The desired state of the cooked patties.
+Type: State
+3 minutes per side
+
+Description: The cooking time for each side of the patties.
+Type: Time Duration
+Steps
+Combine all ingredients
+
+Description: The action of mixing all the ingredients together.
+Type: Step
+Shape into 4 patties
+
+Description: The action of forming the mixture into patties.
+Type: Step
+Cook patties until both sides are golden brown
+
+Description: The action of cooking the patties until they reach the desired state.
+Type: Step
+

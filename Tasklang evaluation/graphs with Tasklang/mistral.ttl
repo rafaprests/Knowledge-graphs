@@ -1,0 +1,120 @@
+@prefix : <http://example.org/tasklang#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers a :Recipe ;
+    :hasName "Easy Seafood Burgers" ;
+    :hasPreparationTime :TenMinutes ;
+    :yields :FourPeople ;
+    :hasIngredient :TunaOrSalmon, :Celery, :RelishOrPickles, :Eggs, :BreadCrumbs, :GreenOnions, :SaltAndPepper ;
+    :hasTool :MixingBowl, :NonStickPan, :Stove ;
+    :hasStep :CombineIngredients, :ShapePatties, :CookPatties ;
+    :hasServingOption :WholeWheatToastOrBannockOrBun ;
+    :hasQuantity :FourPatties ;
+    :hasState :GoldenBrown .
+
+:TenMinutes a :TimeDuration ;
+    :hasValue "10 minutes" .
+
+:FourPeople a :Quantity ;
+    :hasValue "4 people" .
+
+:TunaOrSalmon a :Ingredient ;
+    :hasQuantity :TunaOrSalmonQuantity ;
+    :hasOption :Tuna, :Salmon .
+
+:Tuna a :Ingredient ;
+    :hasName "Tuna" .
+
+:Salmon a :Ingredient ;
+    :hasName "Salmon" .
+
+:TunaOrSalmonQuantity a :IngredientQuantity ;
+    :hasValue "1 can (170g) tuna or can (7 ½ oz/213g) salmon, drained" .
+
+:Celery a :Ingredient ;
+    :hasQuantity :CeleryQuantity .
+
+:CeleryQuantity a :IngredientQuantity ;
+    :hasValue "¼ cup (60mL) celery, finely chopped" .
+
+:RelishOrPickles a :Ingredient ;
+    :hasQuantity :RelishOrPicklesQuantity ;
+    :hasOption :Relish, :ChoppedPickles .
+
+:Relish a :Ingredient ;
+    :hasName "Relish" .
+
+:ChoppedPickles a :Ingredient ;
+    :hasName "Chopped Pickles" .
+
+:RelishOrPicklesQuantity a :IngredientQuantity ;
+    :hasValue "2 Tbsp (30mL) relish or chopped pickles" .
+
+:Eggs a :Ingredient ;
+    :hasQuantity :EggsQuantity .
+
+:EggsQuantity a :IngredientQuantity ;
+    :hasValue "2 eggs, lightly beaten" .
+
+:BreadCrumbs a :Ingredient ;
+    :hasQuantity :BreadCrumbsQuantity .
+
+:BreadCrumbsQuantity a :IngredientQuantity ;
+    :hasValue "½ cup (125mL) bread crumbs" .
+
+:GreenOnions a :Ingredient ;
+    :hasQuantity :GreenOnionsQuantity .
+
+:GreenOnionsQuantity a :IngredientQuantity ;
+    :hasValue "2 green onions, chopped" .
+
+:SaltAndPepper a :Ingredient ;
+    :hasOption :Salt, :Pepper .
+
+:Salt a :Ingredient ;
+    :hasName "Salt" .
+
+:Pepper a :Ingredient ;
+    :hasName "Pepper" .
+
+:FourPatties a :Quantity ;
+    :hasValue "4 small patties" .
+
+:WholeWheatToastOrBannockOrBun a :ServingOption ;
+    :hasOption :WholeWheatToast, :Bannock, :Bun .
+
+:WholeWheatToast a :ServingOption ;
+    :hasName "Whole wheat toast" .
+
+:Bannock a :ServingOption ;
+    :hasName "Bannock" .
+
+:Bun a :ServingOption ;
+    :hasName "Bun" .
+
+:MixingBowl a :Tool ;
+    :hasName "Large mixing bowl" .
+
+:NonStickPan a :Tool ;
+    :hasName "Non-stick pan" .
+
+:Stove a :Tool ;
+    :hasName "Stove" .
+
+:CombineIngredients a :Step ;
+    :hasDescription "Combine all ingredients" .
+
+:ShapePatties a :Step ;
+    :hasDescription "Shape into 4 patties" .
+
+:CookPatties a :Step ;
+    :hasDescription "Cook patties until both sides are golden brown" ;
+    :hasState :GoldenBrown ;
+    :hasTimeDuration :ThreeMinutesPerSide .
+
+:GoldenBrown a :State ;
+    :hasName "Golden brown" .
+
+:ThreeMinutesPerSide a :TimeDuration ;
+    :hasValue "3 minutes per side" .

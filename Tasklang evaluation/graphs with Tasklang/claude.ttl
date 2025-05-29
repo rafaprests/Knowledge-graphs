@@ -1,0 +1,96 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/seafood-burgers/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+recipe:EasySeafoodBurgers a tasklang:Problem ;
+    tasklang:problemName "Easy Seafood Burgers" ;
+    tasklang:goal "Prepare seafood burgers" ;
+    tasklang:inputs [
+        tasklang:resources [
+            rdf:_1 [
+                tasklang:ingredientName "Tuna or Salmon" ;
+                tasklang:quantity "1 can (170g) tuna or can (7 ½ oz/213g) salmon" ;
+                tasklang:preparation "drained"
+            ] ;
+            rdf:_2 [
+                tasklang:ingredientName "Celery" ;
+                tasklang:quantity "¼ cup (60mL)" ;
+                tasklang:preparation "finely chopped"
+            ] ;
+            rdf:_3 [
+                tasklang:ingredientName "Relish or Chopped Pickles" ;
+                tasklang:quantity "2 Tbsp (30mL)"
+            ] ;
+            rdf:_4 [
+                tasklang:ingredientName "Eggs" ;
+                tasklang:quantity "2" ;
+                tasklang:preparation "lightly beaten"
+            ] ;
+            rdf:_5 [
+                tasklang:ingredientName "Bread Crumbs" ;
+                tasklang:quantity "½ cup (125mL)"
+            ] ;
+            rdf:_6 [
+                tasklang:ingredientName "Green Onions" ;
+                tasklang:quantity "2" ;
+                tasklang:preparation "chopped"
+            ] ;
+            rdf:_7 [
+                tasklang:ingredientName "Salt" ;
+                tasklang:quantity "to taste"
+            ] ;
+            rdf:_8 [
+                tasklang:ingredientName "Pepper" ;
+                tasklang:quantity "to taste"
+            ]
+        ]
+    ] ;
+    tasklang:context [
+        tasklang:servings "4 people" ;
+        tasklang:preparationTime "10 minutes"
+    ] ;
+    tasklang:outputs [
+        tasklang:finalProduct [
+            tasklang:productName "Seafood Patties" ;
+            tasklang:quantity "4 small patties" ;
+            tasklang:servingSuggestions [
+                rdf:_1 "Whole wheat toast" ;
+                rdf:_2 "Bannock" ;
+                rdf:_3 "Bun"
+            ]
+        ]
+    ] .
+
+recipe:SeafoodBurgersMethod a tasklang:Method ;
+    tasklang:domain "Home Cooking" ;
+    tasklang:description "Method for preparing seafood burgers" ;
+    tasklang:steps [
+        rdf:_1 [
+            a tasklang:Task ;
+            tasklang:taskName "Combine Ingredients" ;
+            tasklang:action "Mix all ingredients in a large mixing bowl"
+        ] ;
+        rdf:_2 [
+            a tasklang:Task ;
+            tasklang:taskName "Shape Patties" ;
+            tasklang:action "Form the mixture into 4 small patties"
+        ] ;
+        rdf:_3 [
+            a tasklang:Task ;
+            tasklang:taskName "Cook Patties" ;
+            tasklang:action "Cook patties in a non-stick pan on medium-high heat" ;
+            tasklang:duration "3 minutes per side" ;
+            tasklang:targetState "Golden brown"
+        ]
+    ] ;
+    tasklang:tools [
+        rdf:_1 "Large mixing bowl" ;
+        rdf:_2 "Non-stick pan" ;
+        rdf:_3 "Stove"
+    ] .
+
+recipe:SeafoodBurgersStrategy a tasklang:Strategy ;
+    tasklang:problem recipe:EasySeafoodBurgers ;
+    tasklang:methods recipe:SeafoodBurgersMethod .
+

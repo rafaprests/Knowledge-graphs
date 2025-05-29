@@ -1,0 +1,177 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Problem Definition (The Recipe)
+recipe:SeafoodBurgers a tasklang:Problem ;
+    rdfs:label "Easy Seafood Burgers" ;
+    tasklang:description "A simple recipe for making seafood burgers using canned tuna or salmon" ;
+    tasklang:goal "Create delicious and easy seafood burgers ready in 10 minutes" ;
+    
+    # Inputs - Resources (Ingredients)
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Tuna" ;
+        tasklang:description "Canned tuna, drained" ;
+        tasklang:quantity "170g" ;
+        tasklang:alternativeResource recipe:Salmon
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Salmon" ;
+        tasklang:description "Canned salmon, drained, skin and large bones removed" ;
+        tasklang:quantity "213g (7½ oz)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Celery" ;
+        tasklang:description "Finely chopped celery" ;
+        tasklang:quantity "¼ cup (60mL)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Relish" ;
+        tasklang:description "Relish or chopped pickles" ;
+        tasklang:quantity "2 Tbsp (30mL)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Eggs" ;
+        tasklang:description "Lightly beaten eggs" ;
+        tasklang:quantity "2"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Bread Crumbs" ;
+        tasklang:description "Bread crumbs" ;
+        tasklang:quantity "½ cup (125mL)"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Green Onions" ;
+        tasklang:description "Chopped green onions" ;
+        tasklang:quantity "2"
+    ] ;
+    
+    tasklang:hasResource [
+        a tasklang:Resource ;
+        rdfs:label "Salt and Pepper" ;
+        tasklang:description "Salt and pepper to taste"
+    ] ;
+    
+    # Context
+    tasklang:hasContext [
+        a tasklang:Context ;
+        tasklang:domain "Cooking" ;
+        tasklang:constraints "Ready in 10 minutes" ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "Servings" ;
+            tasklang:value "4"^^xsd:integer
+        ] ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "PreparationTime" ;
+            tasklang:value "10"^^xsd:integer ;
+            tasklang:unit "minutes"
+        ]
+    ] ;
+    
+    # Outputs
+    tasklang:finalProduct "4 cooked seafood burger patties" ;
+    tasklang:secondaryOutput "Serve on whole wheat toast, bannock, or a bun" .
+
+# Method Definition
+recipe:SeafoodBurgersMethod a tasklang:Method ;
+    rdfs:label "Easy Seafood Burgers Preparation Method" ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Method for preparing seafood burgers from canned fish" ;
+    
+    # Steps
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Combine Ingredients" ;
+        tasklang:taskOrder "1"^^xsd:integer ;
+        tasklang:action "In a large mixing bowl, combine all ingredients" ;
+        tasklang:output "Mixed seafood burger mixture" ;
+        tasklang:inputs "All ingredients"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Shape Patties" ;
+        tasklang:taskOrder "2"^^xsd:integer ;
+        tasklang:action "Shape the mixture into 4 patties" ;
+        tasklang:output "4 raw seafood burger patties"
+    ] ;
+    
+    tasklang:hasTask [
+        a tasklang:Task ;
+        rdfs:label "Cook Patties" ;
+        tasklang:taskOrder "3"^^xsd:integer ;
+        tasklang:action "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side" ;
+        tasklang:output "4 cooked seafood burger patties" ;
+        tasklang:duration "About 6 minutes total" ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "Heat" ;
+            tasklang:value "Medium-High"
+        ] ;
+        
+        tasklang:hasParameter [
+            a tasklang:Parameter ;
+            tasklang:name "CookTime" ;
+            tasklang:value "3"^^xsd:integer ;
+            tasklang:unit "minutes per side"
+        ]
+    ] ;
+    
+    # Validation Rules
+    tasklang:hasValidationRule [
+        a tasklang:ValidationRule ;
+        rdfs:label "GoldenBrownCheck" ;
+        tasklang:description "Both sides of patties should be golden brown when properly cooked"
+    ] ;
+    
+    # Risks
+    tasklang:hasRisk [
+        rdfs:label "Patty Consistency" ;
+        tasklang:description "Mixture may be too wet and patties might not hold together" ;
+        tasklang:severity "Medium" ;
+        tasklang:mitigation "Add more bread crumbs if mixture is too wet"
+    ] .
+
+# Strategy
+recipe:SeafoodBurgersStrategy a tasklang:Strategy ;
+    rdfs:label "Seafood Burgers Strategy" ;
+    tasklang:targetProblem recipe:SeafoodBurgers ;
+    tasklang:primaryMethod recipe:SeafoodBurgersMethod ;
+    
+    # Strategy Notes
+    tasklang:note "This recipe makes 4 small patties and tastes just as delicious with canned salmon" ;
+    tasklang:note "Serve on whole wheat toast, bannock, or a bun" ;
+    
+    # Domain Context
+    tasklang:hasDomainContext [
+        a tasklang:DomainContext ;
+        tasklang:context "This is a quick and easy recipe suitable for beginners" ;
+        tasklang:provenance [
+            tasklang:source "Recipe document" ;
+            tasklang:confidence "High"
+        ]
+    ] .
+
+# Connection between Problem and Method
+recipe:SeafoodBurgers tasklang:solvedBy recipe:SeafoodBurgersMethod .
+recipe:SeafoodBurgersMethod tasklang:solves recipe:SeafoodBurgers .

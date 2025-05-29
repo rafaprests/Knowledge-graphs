@@ -1,0 +1,101 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix : <http://example.org/> .
+
+# Problem
+:Problem a rdfs:Class ;
+    rdfs:subClassOf tasklang:Problem .
+
+:description a rdf:Property ;
+    rdfs:domain :Problem ;
+    rdfs:range xsd:string .
+
+:goal a rdf:Property ;
+    rdfs:domain :Problem ;
+    rdfs:range xsd:string .
+
+:inputs a rdf:Property ;
+    rdfs:domain :Problem .
+
+:qualityCriteria a rdf:Property ;
+    rdfs:domain :Problem ;
+    rdfs:range rdf:List .
+
+:outputs a rdf:Property ;
+    rdfs:domain :Problem .
+
+# Method
+:Method a rdfs:Class ;
+    rdfs:subClassOf tasklang:Method .
+
+:domain a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range xsd:string .
+
+:prerequisites a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range rdf:List .
+
+:steps a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range rdf:List .
+
+:risks a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range rdf:List .
+
+:validationRules a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range rdf:List .
+
+# Task
+:Task a rdfs:Class ;
+    rdfs:subClassOf tasklang:Task .
+
+:action a rdf:Property ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:string .
+
+:notes a rdf:Property ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:string .
+
+:duration a rdf:Property ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:duration .
+
+:output a rdf:Property ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:string .
+
+# Strategy
+:Strategy a rdfs:Class ;
+    rdfs:subClassOf tasklang:Strategy .
+
+:problem a rdf:Property ;
+    rdfs:domain :Strategy ;
+    rdfs:range :Problem .
+
+:methods a rdf:Property ;
+    rdfs:domain :Strategy ;
+    rdfs:range rdf:List .
+
+:selectionRules a rdf:Property ;
+    rdfs:domain :Strategy ;
+    rdfs:range rdf:List .
+
+:strategyNotes a rdf:Property ;
+    rdfs:domain :Strategy ;
+    rdfs:range rdf:List .
+
+:domainContext a rdf:Property ;
+    rdfs:domain :Strategy ;
+    rdfs:range tasklang:DomainContext .
+
+# DomainContext
+tasklang:DomainContext a rdfs:Class .
+
+:provenance a rdf:Property ;
+    rdfs:domain tasklang:DomainContext .

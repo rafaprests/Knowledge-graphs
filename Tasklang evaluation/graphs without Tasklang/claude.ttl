@@ -1,0 +1,205 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://example.org/recipe/> .
+@prefix food: <http://example.org/food/> .
+@prefix utensil: <http://example.org/utensil/> .
+@prefix action: <http://example.org/action/> .
+@prefix quantity: <http://example.org/quantity/> .
+
+# Recipe Definition
+recipe:EasySeafoodBurgers a recipe:Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    rdfs:description "A seafood-based burger recipe that takes 10 minutes to prepare and serves 4 people" ;
+    recipe:preparationTime "10 minutes" ;
+    recipe:servingSize "4 people" ;
+    recipe:categories ("Seafood" "Main Dish" "Quick Recipe") ;
+    recipe:hasStep (recipe:Step1 recipe:Step2 recipe:Step3) ;
+    recipe:hasIngredient 
+        recipe:CannedFishIngredient,
+        recipe:CeleryIngredient,
+        recipe:RelishOrPicklesIngredient,
+        recipe:EggsIngredient,
+        recipe:BreadCrumbsIngredient,
+        recipe:GreenOnionsIngredient,
+        recipe:SaltAndPepperIngredient .
+
+# Ingredients and Food Items
+recipe:CannedFishIngredient a recipe:Ingredient ;
+    recipe:hasAlternative (recipe:TunaAlternative recipe:SalmonAlternative) .
+
+recipe:TunaAlternative a recipe:Alternative ;
+    recipe:foodItem food:Tuna ;
+    recipe:amount quantity:TunaQuantity .
+
+recipe:SalmonAlternative a recipe:Alternative ;
+    recipe:foodItem food:Salmon ;
+    recipe:amount quantity:SalmonQuantity .
+
+food:Tuna a food:FoodItem ;
+    rdfs:label "Canned Tuna" ;
+    food:state "drained" .
+
+food:Salmon a food:FoodItem ;
+    rdfs:label "Canned Salmon" ;
+    food:state "drained with skin and large bones removed" .
+
+quantity:TunaQuantity a recipe:Quantity ;
+    rdfs:value "1 can (170g)" .
+
+quantity:SalmonQuantity a recipe:Quantity ;
+    rdfs:value "1 can (7 1/2 oz/213g)" .
+
+recipe:CeleryIngredient a recipe:Ingredient ;
+    recipe:foodItem food:Celery ;
+    recipe:amount quantity:CeleryQuantity .
+
+food:Celery a food:FoodItem ;
+    rdfs:label "Celery" ;
+    food:state "finely chopped" .
+
+quantity:CeleryQuantity a recipe:Quantity ;
+    rdfs:value "1/4 cup (60mL)" .
+
+recipe:RelishOrPicklesIngredient a recipe:Ingredient ;
+    recipe:hasAlternative (recipe:RelishAlternative recipe:PicklesAlternative) .
+
+recipe:RelishAlternative a recipe:Alternative ;
+    recipe:foodItem food:Relish ;
+    recipe:amount quantity:RelishPickleQuantity .
+
+recipe:PicklesAlternative a recipe:Alternative ;
+    recipe:foodItem food:Pickles ;
+    recipe:amount quantity:RelishPickleQuantity .
+
+food:Relish a food:FoodItem ;
+    rdfs:label "Relish" .
+
+food:Pickles a food:FoodItem ;
+    rdfs:label "Pickles" ;
+    food:state "chopped" .
+
+quantity:RelishPickleQuantity a recipe:Quantity ;
+    rdfs:value "2 Tbsp (30mL)" .
+
+recipe:EggsIngredient a recipe:Ingredient ;
+    recipe:foodItem food:Eggs ;
+    recipe:amount quantity:EggsQuantity .
+
+food:Eggs a food:FoodItem ;
+    rdfs:label "Eggs" ;
+    food:state "lightly beaten" .
+
+quantity:EggsQuantity a recipe:Quantity ;
+    rdfs:value "2" .
+
+recipe:BreadCrumbsIngredient a recipe:Ingredient ;
+    recipe:foodItem food:BreadCrumbs ;
+    recipe:amount quantity:BreadCrumbsQuantity .
+
+food:BreadCrumbs a food:FoodItem ;
+    rdfs:label "Bread Crumbs" .
+
+quantity:BreadCrumbsQuantity a recipe:Quantity ;
+    rdfs:value "1/2 cup (125mL)" .
+
+recipe:GreenOnionsIngredient a recipe:Ingredient ;
+    recipe:foodItem food:GreenOnions ;
+    recipe:amount quantity:GreenOnionsQuantity .
+
+food:GreenOnions a food:FoodItem ;
+    rdfs:label "Green Onions" ;
+    food:state "chopped" .
+
+quantity:GreenOnionsQuantity a recipe:Quantity ;
+    rdfs:value "2" .
+
+recipe:SaltAndPepperIngredient a recipe:Ingredient ;
+    recipe:foodItem food:SaltAndPepper ;
+    recipe:amount quantity:SaltAndPepperQuantity .
+
+food:SaltAndPepper a food:FoodItem ;
+    rdfs:label "Salt and Pepper" .
+
+quantity:SaltAndPepperQuantity a recipe:Quantity ;
+    rdfs:value "to taste" .
+
+# Serving Options
+recipe:ServingOptionsIngredient a recipe:Ingredient ;
+    recipe:hasAlternative (recipe:WholeWheatToastAlternative recipe:BannockAlternative recipe:BunAlternative) .
+
+recipe:WholeWheatToastAlternative a recipe:Alternative ;
+    recipe:foodItem food:WholeWheatToast .
+
+recipe:BannockAlternative a recipe:Alternative ;
+    recipe:foodItem food:Bannock .
+
+recipe:BunAlternative a recipe:Alternative ;
+    recipe:foodItem food:Bun .
+
+food:WholeWheatToast a food:FoodItem ;
+    rdfs:label "Whole Wheat Toast" .
+
+food:Bannock a food:FoodItem ;
+    rdfs:label "Bannock" .
+
+food:Bun a food:FoodItem ;
+    rdfs:label "Bun" .
+
+# Recipe Steps
+recipe:Step1 a recipe:Step ;
+    recipe:order 1 ;
+    recipe:utensil utensil:LargeMixingBowl ;
+    recipe:inputs (food:Tuna food:Salmon food:Celery food:Relish food:Pickles food:Eggs food:BreadCrumbs food:GreenOnions food:SaltAndPepper) ;
+    recipe:outputs food:MixedIngredients ;
+    recipe:action action:Combine .
+
+recipe:Step2 a recipe:Step ;
+    recipe:order 2 ;
+    recipe:inputs food:MixedIngredients ;
+    recipe:outputs food:SeafoodPatties ;
+    recipe:action action:Shape .
+
+recipe:Step3 a recipe:Step ;
+    recipe:order 3 ;
+    recipe:utensil (utensil:Stove utensil:NonStickPan) ;
+    recipe:inputs food:SeafoodPatties ;
+    recipe:outputs food:CookedSeafoodPatties ;
+    recipe:action action:Cook ;
+    recipe:cookingHeat "medium-high heat" ;
+    recipe:cookingTime "3 minutes per side" .
+
+# Output Food Items
+food:MixedIngredients a food:FoodItem ;
+    rdfs:label "Mixed Ingredients" ;
+    food:state "combined" .
+
+food:SeafoodPatties a food:FoodItem ;
+    rdfs:label "Seafood Patties" ;
+    food:state "formed into 4 patties" .
+
+food:CookedSeafoodPatties a food:FoodItem ;
+    rdfs:label "Cooked Seafood Patties" ;
+    food:state "golden brown on both sides" .
+
+# Utensils
+utensil:LargeMixingBowl a recipe:Utensil ;
+    rdfs:label "Large Mixing Bowl" .
+
+utensil:Stove a recipe:Utensil ;
+    rdfs:label "Stove" .
+
+utensil:NonStickPan a recipe:Utensil ;
+    rdfs:label "Non-stick Pan" .
+
+# Actions
+action:Combine a recipe:Action ;
+    rdfs:label "Combine" ;
+    rdfs:description "Process of mixing all ingredients together in a large bowl" .
+
+action:Shape a recipe:Action ;
+    rdfs:label "Shape" ;
+    rdfs:description "Process of forming the mixture into 4 patties" .
+
+action:Cook a recipe:Action ;
+    rdfs:label "Cook" ;
+    rdfs:description "Process of cooking the patties on medium-high heat until golden brown on both sides, approximately 3 minutes per side" .

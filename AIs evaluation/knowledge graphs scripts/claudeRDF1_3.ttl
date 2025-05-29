@@ -1,0 +1,217 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/> .
+@prefix problem: <http://example.org/problems/> .
+@prefix method: <http://example.org/methods/> .
+@prefix strategy: <http://example.org/strategies/> .
+@prefix task: <http://example.org/tasks/> .
+@prefix resource: <http://example.org/resources/> .
+@prefix domain: <http://domain-specific-ontology.org/concept/> .
+@prefix technique: <http://domain-specific-ontology.org/techniques/> .
+
+# Problem Definition
+problem:EasySeafoodBurgers a tasklang:Problem ;
+    rdfs:label "Easy Seafood Burgers" ;
+    tasklang:description "Création de burgers de fruits de mer faciles et rapides à préparer" ;
+    tasklang:goal "Préparer des burgers de fruits de mer savoureux en 10 minutes" ;
+    tasklang:hasResource resource:Tuna_or_Salmon, resource:Celery, resource:Relish, 
+                        resource:Eggs, resource:Bread_Crumbs, resource:Green_Onions, 
+                        resource:Salt_and_Pepper ;
+    tasklang:hasContext recipe:SeafoodBurgerContext ;
+    tasklang:hasQualityCriteria recipe:AppearanceCriterion, recipe:TextureCriterion, recipe:TasteCriterion ;
+    tasklang:hasFinalOutput "4 petites galettes de fruits de mer dorées" ;
+    tasklang:hasSecondaryOutput "Recommandations_de_service: Servir sur du pain grillé complet, du bannock ou un petit pain" .
+
+# Resources
+resource:Tuna_or_Salmon a tasklang:Resource ;
+    rdfs:label "Tuna or Salmon" ;
+    tasklang:description "1 boîte de thon (170g) ou saumon (213g), égoutté (si saumon, retirer la peau et les grosses arêtes)" .
+
+resource:Celery a tasklang:Resource ;
+    rdfs:label "Celery" ;
+    tasklang:description "Céleri finement haché (60mL, 1/4 tasse)" .
+
+resource:Relish a tasklang:Resource ;
+    rdfs:label "Relish" ;
+    tasklang:description "Relish ou cornichons hachés (30mL, 2 cuillères à soupe)" .
+
+resource:Eggs a tasklang:Resource ;
+    rdfs:label "Eggs" ;
+    tasklang:description "2 œufs, légèrement battus" .
+
+resource:Bread_Crumbs a tasklang:Resource ;
+    rdfs:label "Bread Crumbs" ;
+    tasklang:description "Chapelure (125mL, 1/2 tasse)" .
+
+resource:Green_Onions a tasklang:Resource ;
+    rdfs:label "Green Onions" ;
+    tasklang:description "2 oignons verts, hachés" .
+
+resource:Salt_and_Pepper a tasklang:Resource ;
+    rdfs:label "Salt and Pepper" ;
+    tasklang:description "Sel et poivre au goût" .
+
+# Context
+recipe:SeafoodBurgerContext a tasklang:Context ;
+    tasklang:domain "Cuisine, Recettes rapides" ;
+    tasklang:constraints "Temps de préparation limité à 10 minutes" ;
+    tasklang:reference "Recette de burgers de fruits de mer faciles" ;
+    tasklang:hasParameter recipe:PortionsParameter, recipe:PrepTimeParameter .
+
+recipe:PortionsParameter a tasklang:Parameter ;
+    tasklang:name "Portions" ;
+    tasklang:value "4"^^xsd:integer ;
+    tasklang:unit "personnes" ;
+    tasklang:validRange "4 personnes" .
+
+recipe:PrepTimeParameter a tasklang:Parameter ;
+    tasklang:name "Temps_de_préparation" ;
+    tasklang:value "10"^^xsd:integer ;
+    tasklang:unit "minutes" ;
+    tasklang:validRange "10 minutes" .
+
+# Quality Criteria
+recipe:AppearanceCriterion a tasklang:QualityCriterion ;
+    tasklang:description "Les galettes doivent être dorées des deux côtés" .
+
+recipe:TextureCriterion a tasklang:QualityCriterion ;
+    tasklang:description "Les galettes doivent être cohésives et tenir ensemble" .
+
+recipe:TasteCriterion a tasklang:QualityCriterion ;
+    tasklang:description "Saveur équilibrée de fruits de mer et d'assaisonnements" .
+
+# Method
+method:EasySeafoodBurgersMethod a tasklang:Method ;
+    rdfs:label "Easy Seafood Burgers Method" ;
+    tasklang:domainReference domain:QuickCooking ;
+    tasklang:domain "Cuisine facile, Recettes de fruits de mer" ;
+    tasklang:description "Méthode rapide pour préparer des burgers de fruits de mer en combinant des ingrédients simples" ;
+    tasklang:reference "Recette de burgers de fruits de mer faciles" ;
+    tasklang:hasPrerequisite recipe:IngredientsPrep, recipe:NonStickPan, recipe:FunctionalStove ;
+    tasklang:hasTask task:MixIngredients, task:FormPatties, task:CookPatties ;
+    tasklang:hasRisk recipe:FallingApartRisk, recipe:OvercookingRisk ;
+    tasklang:hasValidationRule recipe:DoneWhenGoldenRule, recipe:AddMoreBreadcrumbsRule .
+
+# Prerequisites
+recipe:IngredientsPrep a tasklang:Prerequisite ;
+    tasklang:description "Ingrédients préparés (légumes hachés, œufs battus)" ;
+    tasklang:importance "Critique" .
+
+recipe:NonStickPan a tasklang:Prerequisite ;
+    tasklang:description "Poêle antiadhésive" ;
+    tasklang:importance "Important" .
+
+recipe:FunctionalStove a tasklang:Prerequisite ;
+    tasklang:description "Cuisine avec cuisinière fonctionnelle" ;
+    tasklang:importance "Critique" .
+
+# Tasks
+task:MixIngredients a tasklang:Task ;
+    rdfs:label "Mélanger_ingrédients" ;
+    tasklang:domainTechnique technique:Mixing ;
+    tasklang:requiresInput resource:Tuna_or_Salmon, resource:Celery, resource:Relish, 
+                         resource:Eggs, resource:Bread_Crumbs, resource:Green_Onions, 
+                         resource:Salt_and_Pepper ;
+    tasklang:action "Dans un grand bol, combiner tous les ingrédients" ;
+    tasklang:notes "Si vous utilisez du saumon, assurez-vous d'avoir retiré la peau et les grosses arêtes" ;
+    tasklang:duration "2-3 minutes" ;
+    tasklang:output "Mélange homogène de fruits de mer" ;
+    tasklang:hasValidationRule recipe:ConsistencyRule .
+
+recipe:ConsistencyRule a tasklang:ValidationRule ;
+    tasklang:description "Le mélange doit être homogène et suffisamment ferme pour former des galettes" .
+
+task:FormPatties a tasklang:Task ;
+    rdfs:label "Former_galettes" ;
+    tasklang:action "Façonner le mélange en 4 galettes" ;
+    tasklang:notes "Les galettes doivent être d'épaisseur uniforme pour une cuisson homogène" ;
+    tasklang:duration "2 minutes" ;
+    tasklang:output "4 galettes crues de taille égale" .
+
+task:CookPatties a tasklang:Task ;
+    rdfs:label "Cuisson_galettes" ;
+    tasklang:action "Allumer la cuisinière à feu moyen-élevé. Dans une poêle antiadhésive, cuire les galettes jusqu'à ce que les deux côtés soient dorés - environ 3 minutes par côté" ;
+    tasklang:notes "Retourner délicatement les galettes pour éviter qu'elles ne se brisent" ;
+    tasklang:duration "6 minutes (3 minutes par côté)" ;
+    tasklang:output "Galettes de fruits de mer cuites et dorées" ;
+    tasklang:hasValidationRule recipe:AppearanceRule ;
+    tasklang:hasParameter recipe:TemperatureParameter, recipe:CookingTimeParameter .
+
+recipe:AppearanceRule a tasklang:ValidationRule ;
+    tasklang:description "Les galettes doivent être dorées des deux côtés" .
+
+recipe:TemperatureParameter a tasklang:Parameter ;
+    tasklang:name "Température" ;
+    tasklang:value "Moyen-élevé" ;
+    tasklang:measurement "Réglage de la cuisinière" .
+
+recipe:CookingTimeParameter a tasklang:Parameter ;
+    tasklang:name "Temps_de_cuisson" ;
+    tasklang:value "3 minutes par côté" ;
+    tasklang:measurement "Minuterie ou observation visuelle" .
+
+# Risks
+recipe:FallingApartRisk a tasklang:Risk ;
+    tasklang:description "Galettes qui se défont pendant la cuisson" ;
+    tasklang:severity "Moyenne" ;
+    tasklang:mitigation "S'assurer que le mélange contient suffisamment d'œuf et de chapelure pour lier les ingrédients" .
+
+recipe:OvercookingRisk a tasklang:Risk ;
+    tasklang:description "Cuisson excessive" ;
+    tasklang:severity "Basse" ;
+    tasklang:mitigation "Surveiller attentivement et retirer de la poêle dès que les galettes sont dorées" .
+
+# Validation Rules
+recipe:DoneWhenGoldenRule a tasklang:ValidationRule ;
+    tasklang:description "SI les galettes sont dorées des deux côtés ALORS elles sont prêtes à servir" .
+
+recipe:AddMoreBreadcrumbsRule a tasklang:ValidationRule ;
+    tasklang:description "SI les galettes se défont pendant la cuisson ALORS ajouter plus de chapelure au mélange restant" .
+
+# Strategy
+strategy:SeafoodBurgersStrategy a tasklang:Strategy ;
+    rdfs:label "Seafood Burgers Strategy" ;
+    tasklang:forProblem problem:EasySeafoodBurgers ;
+    tasklang:hasMethod method:EasySeafoodBurgersMethod, method:SalmonVariation ;
+    tasklang:hasSelectionRule recipe:TunaRule, recipe:SalmonRule, recipe:DefaultRule ;
+    tasklang:hasStrategyNote recipe:VersatilityNote, recipe:ServingNote ;
+    tasklang:hasDomainContext recipe:QuickCookingContext .
+
+# Methods for Strategy
+method:SalmonVariation a tasklang:Method ;
+    rdfs:label "Salmon Variation" ;
+    tasklang:domain "Variation de recette" ;
+    tasklang:context "Utilisation de saumon en conserve" .
+
+# Selection Rules
+recipe:TunaRule a tasklang:SelectionRule ;
+    tasklang:condition "Préférence pour le thon" ;
+    tasklang:selectsMethod method:EasySeafoodBurgersMethod ;
+    tasklang:justification "Utilisation du thon comme ingrédient principal" .
+
+recipe:SalmonRule a tasklang:SelectionRule ;
+    tasklang:condition "Préférence pour le saumon" ;
+    tasklang:selectsMethod method:SalmonVariation ;
+    tasklang:justification "Utilisation du saumon comme ingrédient principal, avec retrait de la peau et des grosses arêtes" .
+
+recipe:DefaultRule a tasklang:SelectionRule ;
+    tasklang:condition "default" ;
+    tasklang:selectsMethod method:EasySeafoodBurgersMethod ;
+    tasklang:justification "Méthode standard pour la préparation des burgers de fruits de mer" .
+
+# Strategy Notes
+recipe:VersatilityNote a tasklang:StrategyNote ;
+    tasklang:description "Versatilité: Cette recette fonctionne aussi bien avec du thon qu'avec du saumon en conserve" .
+
+recipe:ServingNote a tasklang:StrategyNote ;
+    tasklang:description "Service: Servir sur du pain grillé complet, du bannock ou un petit pain" .
+
+# Domain Context
+recipe:QuickCookingContext a tasklang:DomainContext ;
+    tasklang:contextInfo "Cuisine_rapide: Recette conçue pour être préparée en 10 minutes" ;
+    tasklang:contextInfo "Portions: Cette recette fait 4 petites galettes" ;
+    tasklang:source "Recette de burgers de fruits de mer faciles" ;
+    tasklang:confidence "Élevée" ;
+    tasklang:expert "Chef spécialisé en recettes rapides" .

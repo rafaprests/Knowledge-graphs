@@ -1,0 +1,80 @@
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix ex: <http://example.org/> .
+
+ex:Easy_Seafood_Burgers a tasklang:Problem ;
+    tasklang:description "A quick and easy seafood burger recipe using canned tuna or salmon." ;
+    tasklang:goal "Prepare a delicious seafood burger in 10 minutes for 4 people." ;
+    tasklang:inputs [
+        tasklang:resource ex:Tuna ;
+        tasklang:resource ex:Celery ;
+        tasklang:resource ex:Relish ;
+        tasklang:resource ex:Eggs ;
+        tasklang:resource ex:BreadCrumbs ;
+        tasklang:resource ex:GreenOnions ;
+        tasklang:resource ex:SaltPepper
+    ] ;
+    tasklang:context [
+        tasklang:domain "Cooking" ;
+        tasklang:constraints "Must be prepared in 10 minutes, serves 4 people" ;
+        tasklang:reference "Traditional homemade seafood burger recipe" ;
+        tasklang:parameter [
+            tasklang:name "Cooking Time" ;
+            tasklang:value "10" ;
+            tasklang:unit "minutes" ;
+            tasklang:valid_range "5-15 minutes"
+        ]
+    ] ;
+    tasklang:qualityCriteria "Golden brown crust, Well-seasoned taste" ;
+    tasklang:outputs "4 golden brown seafood burger patties" .
+
+ex:Cooking_Seafood_Burgers a tasklang:Method ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "A method for preparing and cooking seafood patties efficiently." ;
+    tasklang:prerequisites [
+        tasklang:requirement "Non-stick pan" ;
+        tasklang:importance "Critical"
+    ], [
+        tasklang:requirement "Stove set to medium-high heat" ;
+        tasklang:importance "Important"
+    ], [
+        tasklang:requirement "Mixing bowl" ;
+        tasklang:importance "Recommended"
+    ] ;
+    tasklang:steps [
+        tasklang:task ex:Mix_Ingredients ;
+        tasklang:task ex:Shape_Patties ;
+        tasklang:task ex:Cook_Patties
+    ] .
+
+ex:Mix_Ingredients a tasklang:Task ;
+    tasklang:action "Combine all ingredients in a large mixing bowl." ;
+    tasklang:notes "Ensure an even mixture for consistency in texture." ;
+    tasklang:duration "2 minutes" ;
+    tasklang:output "A well-mixed seafood patty mixture." .
+
+ex:Shape_Patties a tasklang:Task ;
+    tasklang:action "Form the mixture into 4 equal-sized patties." ;
+    tasklang:notes "Compact but not too tight, to ensure even cooking." ;
+    tasklang:duration "2 minutes" ;
+    tasklang:output "4 raw seafood burger patties." .
+
+ex:Cook_Patties a tasklang:Task ;
+    tasklang:action "Heat a non-stick pan on medium-high heat and cook patties until golden brown on both sides (about 3 minutes per side)." ;
+    tasklang:notes "Flip carefully to prevent breaking." ;
+    tasklang:duration "6 minutes" ;
+    tasklang:output "Golden brown seafood burger patties." .
+
+ex:Fast_Seafood_Burger_Preparation a tasklang:Strategy ;
+    tasklang:problem ex:Easy_Seafood_Burgers ;
+    tasklang:methods [
+        tasklang:method ex:Cooking_Seafood_Burgers ;
+        tasklang:domain "Cooking" ;
+        tasklang:context "Home kitchens with basic tools"
+    ] ;
+    tasklang:selectionRules [
+        tasklang:rule "If cooking for 4 people in under 15 minutes." ;
+        tasklang:method ex:Cooking_Seafood_Burgers ;
+        tasklang:justification "Ensures a quick and efficient cooking process."
+    ] ;
+    tasklang:strategyNotes "Alternative serving options include whole wheat toast, bannock, or a bun. Can substitute tuna with salmon for a different taste." .
+

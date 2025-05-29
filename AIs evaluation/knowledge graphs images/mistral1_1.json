@@ -1,0 +1,248 @@
+﻿[
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "_GraphConfig"
+      ],
+      "properties": {
+        "_classLabel": "Class",
+        "_handleRDFTypes": 0,
+        "_subClassOfRel": "SCO",
+        "_handleMultival": 0,
+        "_objectPropertyLabel": "Relationship",
+        "_rangeRel": "RANGE",
+        "_domainRel": "DOMAIN",
+        "_keepLangTag": false,
+        "_keepCustomDataTypes": false,
+        "_classNamePropName": "name",
+        "_handleVocabUris": 0,
+        "_applyNeo4jNaming": false,
+        "_relNamePropName": "name",
+        "_dataTypePropertyLabel": "Property",
+        "_subPropertyOfRel": "SPO"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:0"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "_NsPrefDef"
+      ],
+      "properties": {
+        "ns0": "http://example.org/recipe#"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:1"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__stepNumber": 1,
+        "ns0__description": "In a large mixing bowl, combine all ingredients.",
+        "ns0__domain": "Cooking",
+        "ns0__context": "Mixing",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc89510"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:2"
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__stepNumber": 2,
+        "ns0__description": "Shape into 4 patties.",
+        "ns0__domain": "Cooking",
+        "ns0__context": "Forming",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc89511"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:3"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__stepNumber": 3,
+        "ns0__description": "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side.",
+        "ns0__domain": "Cooking",
+        "ns0__context": "Cooking",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc89512"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:4"
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "Resource",
+        "ns0__Recipe"
+      ],
+      "properties": {
+        "ns0__description": "Ready in 10 minutes. Serves 4 people.",
+        "ns0__title": "Easy Seafood Burgers",
+        "uri": "http://example.org/recipe#EasySeafoodBurgers",
+        "ns0__tip": "Serve on whole wheat toast, bannock, or a bun."
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:5"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "tuna",
+        "ns0__domain": "Seafood",
+        "ns0__context": "Main protein",
+        "ns0__quantity": "1 can (170g)",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8951"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:6"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "salmon",
+        "ns0__domain": "Seafood",
+        "ns0__context": "Main protein",
+        "ns0__quantity": "1 can (7 ½ oz/213g)",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8952"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:7"
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "celery",
+        "ns0__domain": "Vegetables",
+        "ns0__context": "Flavoring",
+        "ns0__quantity": "¼ cup (60mL)",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8953"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:8"
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "relish",
+        "ns0__domain": "Condiments",
+        "ns0__context": "Flavoring",
+        "ns0__quantity": "2 Tbsp (30mL)",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8954"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:9"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "eggs",
+        "ns0__domain": "Dairy",
+        "ns0__context": "Binding agent",
+        "ns0__quantity": "2",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8955"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:10"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "bread crumbs",
+        "ns0__domain": "Baking",
+        "ns0__context": "Texture",
+        "ns0__quantity": "½ cup (125mL)",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8956"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:11"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "green onions",
+        "ns0__domain": "Vegetables",
+        "ns0__context": "Flavoring",
+        "ns0__quantity": "2",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8957"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:12"
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "salt",
+        "ns0__domain": "Seasonings",
+        "ns0__context": "Flavor enhancer",
+        "ns0__quantity": "to taste",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8958"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:13"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "pepper",
+        "ns0__domain": "Seasonings",
+        "ns0__context": "Flavor enhancer",
+        "ns0__quantity": "to taste",
+        "uri": "bnode://cce553e90a8b446195df6d8ddf1dc8959"
+      },
+      "elementId": "4:f2e85dbd-af68-4235-bca1-bc34b449ad26:14"
+    }
+  }
+]

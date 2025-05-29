@@ -1,0 +1,117 @@
+@prefix ex: <http://example.org/schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:EasySeafoodBurgers a ex:Recipe ;
+    ex:label "Easy Seafood Burgers" ;
+    ex:description "A simple seafood-based burger recipe using canned tuna or salmon, mixed with various ingredients and cooked into patties." ;
+    ex:steps ex:MixingIngredients , ex:ShapingPatties , ex:CookingPatties ;
+    ex:ingredients ex:TunaOrSalmon , ex:Celery , ex:RelishOrPickles , ex:Eggs , ex:BreadCrumbs , ex:GreenOnions , ex:SaltAndPepper ;
+    ex:categories "Seafood" .
+
+ex:TunaOrSalmon a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:CannedTuna ; ex:amount ex:Quantity1 ] , [ ex:food_item ex:CannedSalmon ; ex:amount ex:Quantity2 ] .
+
+ex:CannedTuna a ex:FoodItem ;
+    ex:state ex:Drained .
+
+ex:CannedSalmon a ex:FoodItem ;
+    ex:state ex:Drained .
+
+ex:Quantity1 a ex:Quantity ;
+    ex:value "1 can (170g)" .
+
+ex:Quantity2 a ex:Quantity ;
+    ex:value "1 can (213g)" .
+
+ex:Celery a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:ChoppedCelery ; ex:amount ex:Quantity3 ] .
+
+ex:ChoppedCelery a ex:FoodItem ;
+    ex:state ex:FinelyChopped .
+
+ex:Quantity3 a ex:Quantity ;
+    ex:value "1/4 cup (60mL)" .
+
+ex:RelishOrPickles a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:Relish ; ex:amount ex:Quantity4 ] , [ ex:food_item ex:ChoppedPickles ; ex:amount ex:Quantity4 ] .
+
+ex:Relish a ex:FoodItem .
+ex:ChoppedPickles a ex:FoodItem .
+
+ex:Quantity4 a ex:Quantity ;
+    ex:value "2 Tbsp (30mL)" .
+
+ex:Eggs a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:BeatenEggs ; ex:amount ex:Quantity5 ] .
+
+ex:BeatenEggs a ex:FoodItem ;
+    ex:state ex:LightlyBeaten .
+
+ex:Quantity5 a ex:Quantity ;
+    ex:value "2 eggs" .
+
+ex:BreadCrumbs a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:BreadCrumbsItem ; ex:amount ex:Quantity6 ] .
+
+ex:BreadCrumbsItem a ex:FoodItem .
+
+ex:Quantity6 a ex:Quantity ;
+    ex:value "1/2 cup (125mL)" .
+
+ex:GreenOnions a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:ChoppedGreenOnions ; ex:amount ex:Quantity7 ] .
+
+ex:ChoppedGreenOnions a ex:FoodItem ;
+    ex:state ex:Chopped .
+
+ex:Quantity7 a ex:Quantity ;
+    ex:value "2 green onions" .
+
+ex:SaltAndPepper a ex:Ingredient ;
+    ex:alternatives [ ex:food_item ex:Seasoning ; ex:amount ex:Quantity8 ] .
+
+ex:Seasoning a ex:FoodItem .
+
+ex:Quantity8 a ex:Quantity ;
+    ex:value "To taste" .
+
+ex:MixingIngredients a ex:Step ;
+    ex:order 1 ;
+    ex:utensils ex:MixingBowl ;
+    ex:inputs ex:TunaOrSalmon , ex:Celery , ex:RelishOrPickles , ex:Eggs , ex:BreadCrumbs , ex:GreenOnions , ex:SaltAndPepper ;
+    ex:outputs ex:PattyMixture ;
+    ex:action ex:Mixing .
+
+ex:ShapingPatties a ex:Step ;
+    ex:order 2 ;
+    ex:inputs ex:PattyMixture ;
+    ex:outputs ex:RawPatties ;
+    ex:action ex:Shaping .
+
+ex:CookingPatties a ex:Step ;
+    ex:order 3 ;
+    ex:utensils ex:NonStickPan , ex:Stove ;
+    ex:inputs ex:RawPatties ;
+    ex:outputs ex:CookedPatties ;
+    ex:action ex:Frying .
+
+ex:Mixing a ex:Action ;
+    ex:label "Mixing Ingredients" ;
+    ex:description "The process of combining all ingredients in a bowl to form the patty mixture." .
+
+ex:Shaping a ex:Action ;
+    ex:label "Shaping Patties" ;
+    ex:description "Forming the mixture into four evenly sized patties before cooking." .
+
+ex:Frying a ex:Action ;
+    ex:label "Cooking Patties" ;
+    ex:description "Frying the patties on medium-high heat in a non-stick pan until golden brown on both sides, about 3 minutes per side." .
+
+ex:MixingBowl a ex:Utensil ;
+    ex:label "Large Mixing Bowl" .
+
+ex:NonStickPan a ex:Utensil ;
+    ex:label "Non-Stick Pan" .
+
+ex:Stove a ex:Utensil ;
+    ex:label "Stove" .

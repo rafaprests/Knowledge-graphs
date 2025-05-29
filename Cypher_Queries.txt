@@ -1,0 +1,13 @@
+#Pour activer le mode semantic RDF
+CALL n10s.graphconfig.init();
+
+#Créer des contraintes pour assurer l’unicité des URI
+CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE;
+
+#Charger un fichier TTL
+CALL n10s.rdf.import.fetch("file:////home/rafael/Documents/projeto_pesquisa/recipes/allrecipes/recipesttl/sloppy_joes.ttl", "Turtle");
+
+#Assurer le non-duplication
+CALL n10s.rdf.import.fetch("file:////home/rafael/Documents/projeto_pesquisa/recipes/allrecipes/recipesttl/sloppy_joes.ttl", "Turtle", { handleVocabUris: "SHORTEN", commitSize: 1000, overwrite: true });
+
+TLM / HIERARCHIE

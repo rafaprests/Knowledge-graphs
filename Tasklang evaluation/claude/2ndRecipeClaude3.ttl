@@ -1,0 +1,141 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix recipe: <http://example.org/recipes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Problem Definition
+recipe:SalmonPotatoDish a tasklang:Problem ;
+    rdfs:label "Salmon & Potato Dish" ;
+    tasklang:hasDescription "A baked dish combining canned salmon with mashed potatoes and cheese" ;
+    tasklang:hasGoal "Create a delicious and easy-to-prepare salmon and potato dish" ;
+    tasklang:hasServingSize "2-3 people" ;
+    tasklang:requiresResource recipe:CannedSalmon, recipe:SheddedCheddarCheese, recipe:MashedPotato ;
+    tasklang:hasContext recipe:CookingContext ;
+    tasklang:hasQualityCriterion recipe:HeatingQuality ;
+    tasklang:hasOutput recipe:FinalDish ;
+    tasklang:canBeImplementedBy recipe:StandardMethod, recipe:AlternativeMethod .
+
+# Resources (Ingredients)
+recipe:CannedSalmon a tasklang:Resource ;
+    rdfs:label "Canned Salmon" ;
+    rdfs:comment "Pink or red salmon, drained" ;
+    tasklang:hasQuantity "7 ½ oz/213 g" .
+
+recipe:SheddedCheddarCheese a tasklang:Resource ;
+    rdfs:label "Shredded Cheddar Cheese" ;
+    rdfs:comment "Loosely packed, shredded cheddar cheese" ;
+    tasklang:hasQuantity "1 cup (250 mL)" .
+
+recipe:MashedPotato a tasklang:Resource ;
+    rdfs:label "Mashed Potato" ;
+    rdfs:comment "Leftover or fresh mashed potato" ;
+    tasklang:hasQuantity "2 cups (500mL)" .
+
+# Cooking Context
+recipe:CookingContext a tasklang:Context ;
+    rdfs:label "Cooking Context" ;
+    tasklang:hasDomain "Cooking" ;
+    tasklang:hasParameter recipe:OvenTemperature, recipe:OvenCookTime, recipe:MicrowaveCookTime .
+
+recipe:OvenTemperature a tasklang:Parameter ;
+    rdfs:label "Oven Temperature" ;
+    tasklang:hasValue "350"^^xsd:integer ;
+    tasklang:hasUnit "°F (180°C)" .
+
+recipe:OvenCookTime a tasklang:Parameter ;
+    rdfs:label "Oven Cooking Time" ;
+    tasklang:hasValue "30"^^xsd:integer ;
+    tasklang:hasUnit "minutes" .
+
+recipe:MicrowaveCookTime a tasklang:Parameter ;
+    rdfs:label "Microwave Cooking Time" ;
+    tasklang:hasValue "8"^^xsd:integer ;
+    tasklang:hasUnit "minutes" .
+
+# Quality Criteria
+recipe:HeatingQuality a tasklang:ValidationRule ;
+    rdfs:label "Proper Heating" ;
+    rdfs:comment "The dish should be heated thoroughly with melted cheese on top" .
+
+# Output
+recipe:FinalDish a tasklang:Resource ;
+    rdfs:label "Salmon & Potato Dish" ;
+    rdfs:comment "A baked dish with layers of salmon, cheese, and mashed potatoes" .
+
+# Methods
+recipe:StandardMethod a tasklang:Method ;
+    rdfs:label "Standard Baking Method" ;
+    tasklang:hasDescription "Method for preparing salmon and potato dish using an oven or microwave" ;
+    tasklang:hasDomain "Cooking" ;
+    tasklang:hasTask recipe:MashSalmon, recipe:LayerIngredients, recipe:AddRemainingCheese, recipe:CookDish ;
+    tasklang:producesOutput recipe:FinalDish .
+
+recipe:AlternativeMethod a tasklang:Method ;
+    rdfs:label "Alternative Frying Method" ;
+    tasklang:hasDescription "Alternative method to make salmon and potato patties in a nonstick pan" ;
+    tasklang:hasDomain "Cooking" ;
+    tasklang:hasNote "For a change, this dish can also be made into patties and fried in a nonstick pan" .
+
+# Tasks
+recipe:MashSalmon a tasklang:Task ;
+    rdfs:label "Mash Salmon" ;
+    tasklang:hasAction "Mash the salmon with the bones" ;
+    tasklang:requiresInput recipe:CannedSalmon ;
+    tasklang:producesOutput recipe:MashedSalmon .
+
+recipe:MashedSalmon a tasklang:Resource ;
+    rdfs:label "Mashed Salmon" ;
+    rdfs:comment "Canned salmon mashed with bones" .
+
+recipe:LayerIngredients a tasklang:Task ;
+    rdfs:label "Layer Ingredients" ;
+    tasklang:hasAction "Put the salmon on the bottom of a small baking dish. Sprinkle it with pepper and half the shredded cheese. Spread the mashed potato on top of the salmon and cheese." ;
+    tasklang:requiresInput recipe:MashedSalmon, recipe:SheddedCheddarCheese, recipe:MashedPotato ;
+    tasklang:usesParameter recipe:PepperAmount ;
+    tasklang:producesOutput recipe:PartiallyAssembledDish .
+
+recipe:PepperAmount a tasklang:Parameter ;
+    rdfs:label "Pepper Amount" ;
+    tasklang:hasValue "Pinch" ;
+    tasklang:hasUnit "of pepper" .
+
+recipe:PartiallyAssembledDish a tasklang:Resource ;
+    rdfs:label "Partially Assembled Dish" ;
+    rdfs:comment "Layered dish with salmon, pepper, half the cheese, and mashed potatoes" .
+
+recipe:AddRemainingCheese a tasklang:Task ;
+    rdfs:label "Add Remaining Cheese" ;
+    tasklang:hasAction "Sprinkle the rest of the cheese on top" ;
+    tasklang:requiresInput recipe:PartiallyAssembledDish, recipe:SheddedCheddarCheese ;
+    tasklang:producesOutput recipe:UnbakedDish .
+
+recipe:UnbakedDish a tasklang:Resource ;
+    rdfs:label "Unbaked Dish" ;
+    rdfs:comment "Fully assembled but uncooked dish" .
+
+recipe:CookDish a tasklang:Task ;
+    rdfs:label "Cook Dish" ;
+    tasklang:hasAction "Bake in a 350°F (180°C) oven for 30 minutes, or microwave for 8 minutes" ;
+    tasklang:requiresInput recipe:UnbakedDish ;
+    tasklang:usesParameter recipe:OvenTemperature, recipe:OvenCookTime, recipe:MicrowaveCookTime ;
+    tasklang:producesOutput recipe:FinalDish .
+
+# Strategy
+recipe:CookingStrategy a tasklang:Strategy ;
+    rdfs:label "Salmon & Potato Dish Cooking Strategy" ;
+    tasklang:addressesProblem recipe:SalmonPotatoDish ;
+    tasklang:includesMethod recipe:StandardMethod, recipe:AlternativeMethod ;
+    tasklang:hasSelectionRule recipe:StandardRule, recipe:AlternativeRule .
+
+recipe:StandardRule a tasklang:ValidationRule ;
+    rdfs:label "Standard Method Selection Rule" ;
+    tasklang:hasCondition "If quick baking or microwaving is preferred" ;
+    tasklang:recommends recipe:StandardMethod ;
+    tasklang:hasJustification "Standard method is quick and easy for a traditional baked dish" .
+
+recipe:AlternativeRule a tasklang:ValidationRule ;
+    rdfs:label "Alternative Method Selection Rule" ;
+    tasklang:hasCondition "If a different texture or presentation is desired" ;
+    tasklang:recommends recipe:AlternativeMethod ;
+    tasklang:hasJustification "Alternative method creates patties that have a different texture and presentation" .

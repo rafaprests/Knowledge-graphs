@@ -1,0 +1,62 @@
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix recipe: <http://example.org/recipe#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+recipe:EasySeafoodBurgers a tasklang:Problem ;
+    tasklang:description "Easy Seafood Burgers" ;
+    tasklang:goal "Create delicious seafood burgers" ;
+    tasklang:inputs [
+        a tasklang:Resource ;
+        recipe:ingredient recipe:Tuna ;
+        recipe:ingredient recipe:Salmon ;
+        recipe:quantity "1 can (170g) tuna or can (7 ½ oz/213g) salmon drained" ;
+        recipe:ingredient recipe:Celery ;
+        recipe:quantity "¼ cup (60mL) celery finely chopped" ;
+        recipe:ingredient recipe:Relish ; 
+        recipe:ingredient recipe:ChoppedPickles ;
+        recipe:quantity "2 Tbsp (30mL) relish or chopped pickles" ;
+        recipe:ingredient recipe:Eggs ;
+        recipe:quantity "2 eggs lightly beaten" ;
+        recipe:ingredient recipe:BreadCrumbs ;
+        recipe:quantity "½ cup (125mL) bread crumbs" ;
+        recipe:ingredient recipe:GreenOnions ;
+        recipe:quantity "2 green onions chopped" ;
+        recipe:ingredient recipe:Salt ;
+        recipe:ingredient recipe:Pepper ;
+        recipe:quantity "Salt and pepper to taste"
+    ] ;
+    tasklang:context [
+        a tasklang:Context ;
+        recipe:servings "4 people" ;
+        recipe:prepTime "10 minutes"^^xsd:duration ;
+        recipe:cookTime "3 minutes per side"^^xsd:duration ;
+        recipe:servingOption (recipe:WholeWheatToast recipe:Bannock recipe:Bun)
+    ] ;
+    tasklang:outputs [
+        recipe:finalProduct "4 small patties" ;
+        recipe:desiredState "Golden brown"
+    ] .
+
+recipe:SeafoodBurgerMethod a tasklang:Method ;
+    tasklang:description "Method for making Easy Seafood Burgers" ;
+    tasklang:steps (
+    [
+        a tasklang:Task ;
+        tasklang:action "Combine all ingredients" ;
+        tasklang:inputs recipe:LargeMixingBowl
+    ] [
+        a tasklang:Task ;
+        tasklang:action "Shape into 4 patties"
+    ] [
+        a tasklang:Task ;
+        tasklang:action "Cook patties until both sides are golden brown" ;
+        tasklang:inputs (recipe:NonStickPan recipe:Stove) ;
+        tasklang:parameters [
+            recipe:temperature "Medium-high heat"
+        ]
+    ] 
+    ).
+
+recipe:SeafoodBurgerStrategy a tasklang:Strategy ;
+    tasklang:problem recipe:EasySeafoodBurgers ;
+    tasklang:methods recipe:SeafoodBurgerMethod .

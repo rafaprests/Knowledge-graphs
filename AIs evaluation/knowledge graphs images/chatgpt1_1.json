@@ -1,0 +1,346 @@
+﻿[
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "_GraphConfig"
+      ],
+      "properties": {
+        "_classLabel": "Class",
+        "_handleRDFTypes": 0,
+        "_subClassOfRel": "SCO",
+        "_handleMultival": 0,
+        "_objectPropertyLabel": "Relationship",
+        "_rangeRel": "RANGE",
+        "_domainRel": "DOMAIN",
+        "_keepLangTag": false,
+        "_keepCustomDataTypes": false,
+        "_classNamePropName": "name",
+        "_handleVocabUris": 0,
+        "_applyNeo4jNaming": false,
+        "_relNamePropName": "name",
+        "_dataTypePropertyLabel": "Property",
+        "_subPropertyOfRel": "SPO"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:0"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "_NsPrefDef"
+      ],
+      "properties": {
+        "ns0": "http://example.org/tasklang#"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:1"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Resource",
+        "ns0__Strategy"
+      ],
+      "properties": {
+        "uri": "http://example.org/Fast_Seafood_Burger_Preparation",
+        "ns0__strategyNotes": "Alternative serving options include whole wheat toast, bannock, or a bun. Can substitute tuna with salmon for a different taste."
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:2"
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/GreenOnions"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:3"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/Eggs"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:4"
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "Resource",
+        "ns0__Problem"
+      ],
+      "properties": {
+        "ns0__description": "A quick and easy seafood burger recipe using canned tuna or salmon.",
+        "ns0__outputs": "4 golden brown seafood burger patties",
+        "ns0__qualityCriteria": "Golden brown crust, Well-seasoned taste",
+        "uri": "http://example.org/Easy_Seafood_Burgers",
+        "ns0__goal": "Prepare a delicious seafood burger in 10 minutes for 4 people."
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:5"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "Golden brown seafood burger patties.",
+        "ns0__notes": "Flip carefully to prevent breaking.",
+        "ns0__action": "Heat a non-stick pan on medium-high heat and cook patties until golden brown on both sides (about 3 minutes per side).",
+        "ns0__duration": "6 minutes",
+        "uri": "http://example.org/Cook_Patties"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:6"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__constraints": "Must be prepared in 10 minutes, serves 4 people",
+        "ns0__reference": "Traditional homemade seafood burger recipe",
+        "ns0__domain": "Cooking",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462522"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:7"
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "A well-mixed seafood patty mixture.",
+        "ns0__notes": "Ensure an even mixture for consistency in texture.",
+        "ns0__action": "Combine all ingredients in a large mixing bowl.",
+        "ns0__duration": "2 minutes",
+        "uri": "http://example.org/Mix_Ingredients"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:8"
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__name": "Cooking Time",
+        "ns0__unit": "minutes",
+        "ns0__valid_range": "5-15 minutes",
+        "ns0__value": "10",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462523"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:9"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462521"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:10"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/Celery"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:11"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/SaltPepper"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:12"
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/Relish"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:13"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Resource",
+        "ns0__Method"
+      ],
+      "properties": {
+        "ns0__description": "A method for preparing and cooking seafood patties efficiently.",
+        "ns0__domain": "Cooking",
+        "uri": "http://example.org/Cooking_Seafood_Burgers"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:14"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__domain": "Cooking",
+        "ns0__context": "Home kitchens with basic tools",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462528"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:15"
+    }
+  },
+  {
+    "n": {
+      "identity": 16,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/BreadCrumbs"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:16"
+    }
+  },
+  {
+    "n": {
+      "identity": 17,
+      "labels": [
+        "Resource",
+        "ns0__Task"
+      ],
+      "properties": {
+        "ns0__output": "4 raw seafood burger patties.",
+        "ns0__notes": "Compact but not too tight, to ensure even cooking.",
+        "ns0__action": "Form the mixture into 4 equal-sized patties.",
+        "ns0__duration": "2 minutes",
+        "uri": "http://example.org/Shape_Patties"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:17"
+    }
+  },
+  {
+    "n": {
+      "identity": 18,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__rule": "If cooking for 4 people in under 15 minutes.",
+        "ns0__justification": "Ensures a quick and efficient cooking process.",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462529"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:18"
+    }
+  },
+  {
+    "n": {
+      "identity": 19,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__requirement": "Mixing bowl",
+        "ns0__importance": "Recommended",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462526"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:19"
+    }
+  },
+  {
+    "n": {
+      "identity": 20,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462527"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:20"
+    }
+  },
+  {
+    "n": {
+      "identity": 21,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "uri": "http://example.org/Tuna"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:21"
+    }
+  },
+  {
+    "n": {
+      "identity": 22,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__requirement": "Non-stick pan",
+        "ns0__importance": "Critical",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462524"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:22"
+    }
+  },
+  {
+    "n": {
+      "identity": 23,
+      "labels": [
+        "Resource"
+      ],
+      "properties": {
+        "ns0__requirement": "Stove set to medium-high heat",
+        "ns0__importance": "Important",
+        "uri": "bnode://94d7f6285e6d4fa291c23244ade462525"
+      },
+      "elementId": "4:b6c0f060-8484-4e12-85be-ff23e55de5f7:23"
+    }
+  }
+]

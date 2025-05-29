@@ -1,0 +1,238 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/> .
+
+# Problem Definition
+recipe:EasySeafoodBurgers a tasklang:Problem ;
+    rdfs:label "Easy Seafood Burgers" ;
+    tasklang:description "Préparation de hamburgers à base de fruits de mer comme alternative plus saine et économique aux hamburgers traditionnels" ;
+    tasklang:goal "Créer des galettes savoureuses à base de poisson en conserve qui peuvent être servies comme repas principal" ;
+    tasklang:hasResource recipe:Tuna, recipe:Salmon, recipe:Celery, recipe:Relish, recipe:Eggs, recipe:Bread_crumbs, recipe:Green_onions, recipe:Salt_and_pepper ;
+    tasklang:design "Mélange d'ingrédients façonné en galettes puis cuit à la poêle" ;
+    tasklang:hasContext recipe:CookingContext ;
+    tasklang:hasQualityCriteria recipe:TextureCriterion, recipe:AppearanceCriterion, recipe:TasteCriterion ;
+    tasklang:finalProduct "4 galettes de fruits de mer prêtes à servir" ;
+    tasklang:secondaryOutput "Suggestions_service: Servir sur pain de blé entier, bannique, ou petit pain" .
+
+# Resources Definition
+recipe:Tuna a tasklang:Resource ;
+    rdfs:label "Tuna" ;
+    tasklang:description "Thon en conserve, égoutté" ;
+    tasklang:quantity "170g" ;
+    tasklang:measurement "1 boîte" .
+
+recipe:Salmon a tasklang:Resource ;
+    rdfs:label "Salmon" ;
+    tasklang:description "Saumon en conserve, égoutté avec peau et grandes arêtes retirées" ;
+    tasklang:quantity "213g" ;
+    tasklang:measurement "1 boîte" .
+
+recipe:Celery a tasklang:Resource ;
+    rdfs:label "Celery" ;
+    tasklang:description "Céleri finement haché" ;
+    tasklang:quantity "60mL" ;
+    tasklang:measurement "¼ tasse" .
+
+recipe:Relish a tasklang:Resource ;
+    rdfs:label "Relish" ;
+    tasklang:description "Relish ou cornichons hachés" ;
+    tasklang:quantity "30mL" ;
+    tasklang:measurement "2 cuillères à soupe" .
+
+recipe:Eggs a tasklang:Resource ;
+    rdfs:label "Eggs" ;
+    tasklang:description "Œufs légèrement battus" ;
+    tasklang:quantity "2" .
+
+recipe:Bread_crumbs a tasklang:Resource ;
+    rdfs:label "Bread crumbs" ;
+    tasklang:description "Chapelure" ;
+    tasklang:quantity "125mL" ;
+    tasklang:measurement "½ tasse" .
+
+recipe:Green_onions a tasklang:Resource ;
+    rdfs:label "Green onions" ;
+    tasklang:description "Oignons verts hachés" ;
+    tasklang:quantity "2" .
+
+recipe:Salt_and_pepper a tasklang:Resource ;
+    rdfs:label "Salt and pepper" ;
+    tasklang:description "Sel et poivre" ;
+    tasklang:quantity "au goût" .
+
+# Context Definition
+recipe:CookingContext a tasklang:Context ;
+    tasklang:domain "Cuisine, Recettes faciles" ;
+    tasklang:constraints "Préparation rapide, Ingrédients économiques et accessibles" ;
+    tasklang:reference "Recette de hamburgers aux fruits de mer" ;
+    tasklang:hasParameter recipe:PrepTimeParam, recipe:ServingsParam, recipe:CookingTempParam .
+
+# Parameters Definition
+recipe:PrepTimeParam a tasklang:Parameter ;
+    rdfs:label "Temps de préparation" ;
+    tasklang:value "10"^^xsd:integer ;
+    tasklang:unit "minutes" ;
+    tasklang:validRange "8-12 minutes" .
+
+recipe:ServingsParam a tasklang:Parameter ;
+    rdfs:label "Portions" ;
+    tasklang:value "4"^^xsd:integer ;
+    tasklang:unit "personnes" ;
+    tasklang:validRange "4 petites galettes" .
+
+recipe:CookingTempParam a tasklang:Parameter ;
+    rdfs:label "Température cuisson" ;
+    tasklang:value "Moyen-élevé" ;
+    tasklang:unit "niveau de chaleur" ;
+    tasklang:validRange "Moyen à élevé" .
+
+# Quality Criteria Definition
+recipe:TextureCriterion a tasklang:QualityCriterion ;
+    rdfs:label "Texture" ;
+    tasklang:description "Les galettes doivent être cohésives et ne pas se défaire pendant la cuisson" .
+
+recipe:AppearanceCriterion a tasklang:QualityCriterion ;
+    rdfs:label "Apparence" ;
+    tasklang:description "Les deux côtés doivent être dorés après la cuisson" .
+
+recipe:TasteCriterion a tasklang:QualityCriterion ;
+    rdfs:label "Goût" ;
+    tasklang:description "Saveur de fruits de mer équilibrée avec les autres ingrédients" .
+
+# Method Definition
+recipe:EasySeafoodBurgerPreparation a tasklang:Method ;
+    rdfs:label "Easy Seafood Burger Preparation" ;
+    tasklang:domain "Cuisine rapide, Recettes de fruits de mer" ;
+    tasklang:description "Méthode simple pour préparer des hamburgers à base de poisson en conserve" ;
+    tasklang:reference "Recette classique de galettes de poisson économiques" ;
+    tasklang:hasDomainReference <http://domain-specific-ontology.org/concept/QuickCooking> ;
+    tasklang:hasPrerequisite recipe:IngredientsPrereq, recipe:PanPrereq, recipe:BowlPrereq ;
+    tasklang:hasStep recipe:MixIngredientsTask, recipe:FormPattiesTask, recipe:CookPattiesTask ;
+    tasklang:hasRisk recipe:DisintegrationRisk, recipe:OvercookingRisk ;
+    tasklang:hasValidationRule recipe:ColorValidationRule, recipe:ConsistencyValidationRule .
+
+# Prerequisites Definition
+recipe:IngredientsPrereq a tasklang:Prerequisite ;
+    rdfs:label "Ingredients prerequisite" ;
+    tasklang:description "Disposer de tous les ingrédients mesurés et préparés" ;
+    tasklang:importance "Critique" .
+
+recipe:PanPrereq a tasklang:Prerequisite ;
+    rdfs:label "Pan prerequisite" ;
+    tasklang:description "Avoir une poêle anti-adhésive" ;
+    tasklang:importance "Important" .
+
+recipe:BowlPrereq a tasklang:Prerequisite ;
+    rdfs:label "Bowl prerequisite" ;
+    tasklang:description "Avoir un grand bol à mélanger" ;
+    tasklang:importance "Important" .
+
+# Tasks Definition
+recipe:MixIngredientsTask a tasklang:Task ;
+    rdfs:label "Mélanger ingrédients" ;
+    tasklang:hasDomainTechnique <http://domain-specific-ontology.org/techniques/Mixing> ;
+    tasklang:action "Dans un grand bol à mélanger, combiner tous les ingrédients" ;
+    tasklang:notes "Si vous utilisez du saumon, assurez-vous d'avoir retiré la peau et les grandes arêtes" ;
+    tasklang:duration "2-3 minutes" ;
+    tasklang:output "Mélange homogène pour former des galettes" ;
+    tasklang:hasValidationRule [
+        a tasklang:ValidationRule ;
+        rdfs:label "Consistence" ;
+        tasklang:description "Le mélange doit être suffisamment compact pour maintenir sa forme"
+    ] ;
+    tasklang:hasParameter [
+        a tasklang:Parameter ;
+        tasklang:name "Homogénéité" ;
+        tasklang:value "Élevée" ;
+        tasklang:measurement "Inspection visuelle de la répartition des ingrédients"
+    ] .
+
+recipe:FormPattiesTask a tasklang:Task ;
+    rdfs:label "Former galettes" ;
+    tasklang:action "Façonner le mélange en 4 galettes de taille égale" ;
+    tasklang:notes "Si le mélange est trop humide, ajouter un peu plus de chapelure" ;
+    tasklang:duration "2 minutes" ;
+    tasklang:output "4 galettes crues prêtes à cuire" .
+
+recipe:CookPattiesTask a tasklang:Task ;
+    rdfs:label "Cuire galettes" ;
+    tasklang:action "Allumer la cuisinière à feu moyen-élevé. Dans une poêle anti-adhésive, cuire les galettes jusqu'à ce que les deux côtés soient dorés - environ 3 minutes par côté" ;
+    tasklang:notes "Éviter de trop manipuler les galettes pendant la cuisson" ;
+    tasklang:duration "6-7 minutes" ;
+    tasklang:output "Galettes cuites prêtes à servir" .
+
+# Risks Definition
+recipe:DisintegrationRisk a tasklang:Risk ;
+    rdfs:label "Désagrégation" ;
+    tasklang:description "Les galettes peuvent se défaire pendant la cuisson" ;
+    tasklang:severity "Moyenne" ;
+    tasklang:mitigation "S'assurer que le mélange contient suffisamment d'œuf et de chapelure pour lier les ingrédients" .
+
+recipe:OvercookingRisk a tasklang:Risk ;
+    rdfs:label "Surcuisson" ;
+    tasklang:description "Les galettes peuvent devenir trop sèches" ;
+    tasklang:severity "Moyenne" ;
+    tasklang:mitigation "Surveiller attentivement le temps de cuisson et la couleur des galettes" .
+
+# Validation Rules Definition
+recipe:ColorValidationRule a tasklang:ValidationRule ;
+    rdfs:label "Validation de couleur" ;
+    tasklang:condition "la couleur est dorée des deux côtés" ;
+    tasklang:consequence "les galettes sont prêtes" .
+
+recipe:ConsistencyValidationRule a tasklang:ValidationRule ;
+    rdfs:label "Validation de consistance" ;
+    tasklang:condition "les galettes se défont facilement" ;
+    tasklang:consequence "ajouter plus de liant (œuf ou chapelure)" .
+
+# Strategy Definition
+recipe:SeafoodBurgerStrategies a tasklang:Strategy ;
+    rdfs:label "Seafood Burger Strategies" ;
+    tasklang:forProblem recipe:EasySeafoodBurgers ;
+    tasklang:hasMethod recipe:EasySeafoodBurgerPreparation, recipe:AlternativeFishSelection ;
+    tasklang:hasSelectionRule recipe:TunaRule, recipe:SalmonRule, recipe:DefaultRule ;
+    tasklang:hasStrategyNote recipe:ServingSuggestionNote, recipe:PattySizeNote ;
+    tasklang:hasDomainContext recipe:EconomicalCookingContext .
+
+# Method for the strategy - Alternative fish
+recipe:AlternativeFishSelection a tasklang:Method ;
+    rdfs:label "Alternative Fish Selection" ;
+    tasklang:domain "Variation de recette" ;
+    tasklang:context "Adaptation selon les préférences ou disponibilités" .
+
+# Selection Rules Definition
+recipe:TunaRule a tasklang:SelectionRule ;
+    tasklang:condition "Disposer de thon en conserve" ;
+    tasklang:selectsMethod recipe:EasySeafoodBurgerPreparation ;
+    tasklang:justification "Le thon est l'option par défaut pour cette recette, facile à égoutter et bien cohésif" .
+
+recipe:SalmonRule a tasklang:SelectionRule ;
+    tasklang:condition "Préférer ou disposer de saumon en conserve" ;
+    tasklang:selectsMethod recipe:AlternativeFishSelection ;
+    tasklang:justification "Le saumon offre une saveur différente mais tout aussi délicieuse, avec une teneur plus élevée en oméga-3" .
+
+recipe:DefaultRule a tasklang:SelectionRule ;
+    tasklang:condition "default" ;
+    tasklang:selectsMethod recipe:EasySeafoodBurgerPreparation ;
+    tasklang:justification "Méthode standard qui fonctionne bien pour tous les types de poisson en conserve" .
+
+# Strategy Notes Definition
+recipe:ServingSuggestionNote a tasklang:StrategyNote ;
+    rdfs:label "Adaptation servir" ;
+    tasklang:description "Cette recette est polyvalente et peut être servie sur du pain de blé entier, de la bannique ou un petit pain" .
+
+recipe:PattySizeNote a tasklang:StrategyNote ;
+    rdfs:label "Taille galettes" ;
+    tasklang:description "La recette donne 4 petites galettes qui peuvent être ajustées en taille selon les préférences" .
+
+# Domain Context Definition
+recipe:EconomicalCookingContext a tasklang:DomainContext ;
+    rdfs:label "Cuisine économique" ;
+    tasklang:description "Cette recette utilise des ingrédients abordables et des produits en conserve, ce qui en fait une option économique" ;
+    tasklang:hasProvenance [
+        tasklang:source "Recette traditionnelle adaptée" ;
+        tasklang:confidence "Élevée" ;
+        tasklang:expert "Spécialistes de la cuisine pratique et économique"
+    ] .

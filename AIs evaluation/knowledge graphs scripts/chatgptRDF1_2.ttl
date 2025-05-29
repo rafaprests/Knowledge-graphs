@@ -1,0 +1,62 @@
+@prefix tasklang: <http://example.org/tasklang#> .
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+ex:EasySeafoodBurgers a tasklang:Problem ;
+    tasklang:description "How to prepare quick and easy seafood burgers." ;
+    tasklang:goal "Create four seafood burger patties in 10 minutes." ;
+    tasklang:inputs [
+        a tasklang:Resource ;
+        tasklang:ingredient "Canned Tuna or Salmon (170g-213g, drained, skin and large bones removed if using salmon)" ;
+        tasklang:ingredient "Celery (60mL, finely chopped)" ;
+        tasklang:ingredient "Relish or Pickles (30mL, chopped)" ;
+        tasklang:ingredient "Eggs (2, lightly beaten)" ;
+        tasklang:ingredient "Bread Crumbs (125mL)" ;
+        tasklang:ingredient "Green Onions (2, chopped)" ;
+        tasklang:ingredient "Salt and Pepper (to taste)"
+    ] ;
+    tasklang:qualityCriteria "Taste: Well-balanced flavors" , "Texture: Firm but tender patties" , "Cooking: Evenly browned on both sides" ;
+    tasklang:outputs [
+        tasklang:finalProduct "Four cooked seafood burger patties." ;
+        tasklang:secondaryOutput "Alternative Serving Options: Can be served on whole wheat toast, bannock, or a bun."
+    ] .
+
+ex:PrepareSeafoodBurgers a tasklang:Method ;
+    tasklang:domain "Cooking" ;
+    tasklang:description "Mix ingredients, form patties, and cook until golden brown." ;
+    tasklang:prerequisite "Access to a non-stick pan" , "Ingredients prepared and measured" , "Stove operational and set to medium-high heat" ;
+    tasklang:steps (
+        [ a tasklang:Task ;
+          tasklang:name "Mix Ingredients" ;
+          tasklang:action "Combine all ingredients in a large mixing bowl." ;
+          tasklang:notes "Ensure thorough mixing for even consistency." ;
+          tasklang:duration "2 minutes" ;
+          tasklang:output "Homogeneous mixture ready for shaping."
+        ]
+        [ a tasklang:Task ;
+          tasklang:name "Shape Patties" ;
+          tasklang:action "Divide mixture into four equal portions and form into patties." ;
+          tasklang:notes "Shape with hands or a mold for uniform size." ;
+          tasklang:duration "2 minutes" ;
+          tasklang:output "Four evenly shaped patties."
+        ]
+        [ a tasklang:Task ;
+          tasklang:name "Cook Patties" ;
+          tasklang:action "Cook patties for 3 minutes per side until golden brown." ;
+          tasklang:notes "Use a spatula to flip patties gently." ;
+          tasklang:duration "6 minutes" ;
+          tasklang:output "Golden brown seafood burger patties."
+        ]
+    ) .
+
+ex:QuickCooking a tasklang:Strategy ;
+    tasklang:problem ex:EasySeafoodBurgers ;
+    tasklang:methods ex:PrepareSeafoodBurgers ;
+    tasklang:selectionRule [
+        tasklang:condition "IF time available is less than 15 minutes" ;
+        tasklang:method ex:PrepareSeafoodBurgers ;
+        tasklang:justification "This method is efficient and ensures quick preparation."
+    ] ;
+    tasklang:strategyNotes "This strategy is optimal for busy individuals." , "The recipe can be adjusted for alternative seasonings." ;
+    tasklang:domainContext "Home Cooking: Suitable for quick and easy meals." .
+

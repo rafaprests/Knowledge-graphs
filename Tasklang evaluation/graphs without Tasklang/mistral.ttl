@@ -1,0 +1,183 @@
+@prefix : <http://example.org/recipe#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:EasySeafoodBurgers rdf:type :Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    :description "A simple and quick seafood burger recipe." ;
+    :steps (:Step1 :Step2 :Step3) ;
+    :ingredients (:TunaOrSalmon :Celery :RelishOrPickles :Eggs :BreadCrumbs :GreenOnions :SaltAndPepper) ;
+    :categories ("Seafood" "Burger" "Quick") .
+
+:TunaOrSalmon rdf:type :Ingredient ;
+    :alternatives (:Tuna :Salmon) .
+
+:Tuna rdf:type :Alternative ;
+    :food_item :TunaFish ;
+    :amount :TunaQuantity .
+
+:Salmon rdf:type :Alternative ;
+    :food_item :SalmonFish ;
+    :amount :SalmonQuantity .
+
+:TunaFish rdf:type :FoodItem ;
+    rdfs:label "Tuna" .
+
+:SalmonFish rdf:type :FoodItem ;
+    rdfs:label "Salmon" .
+
+:TunaQuantity rdf:type :Quantity ;
+    :value "1 can (170g)" .
+
+:SalmonQuantity rdf:type :Quantity ;
+    :value "1 can (7 ½ oz/213g)" .
+
+:Celery rdf:type :Ingredient ;
+    :alternatives (:CeleryAlternative) .
+
+:CeleryAlternative rdf:type :Alternative ;
+    :food_item :CeleryFood ;
+    :amount :CeleryQuantity .
+
+:CeleryFood rdf:type :FoodItem ;
+    rdfs:label "Celery" .
+
+:CeleryQuantity rdf:type :Quantity ;
+    :value "¼ cup (60mL)" .
+
+:RelishOrPickles rdf:type :Ingredient ;
+    :alternatives (:Relish :ChoppedPickles) .
+
+:Relish rdf:type :Alternative ;
+    :food_item :RelishFood ;
+    :amount :RelishQuantity .
+
+:ChoppedPickles rdf:type :Alternative ;
+    :food_item :PicklesFood ;
+    :amount :PicklesQuantity .
+
+:RelishFood rdf:type :FoodItem ;
+    rdfs:label "Relish" .
+
+:PicklesFood rdf:type :FoodItem ;
+    rdfs:label "Chopped Pickles" .
+
+:RelishQuantity rdf:type :Quantity ;
+    :value "2 Tbsp (30mL)" .
+
+:PicklesQuantity rdf:type :Quantity ;
+    :value "2 Tbsp (30mL)" .
+
+:Eggs rdf:type :Ingredient ;
+    :alternatives (:EggsAlternative) .
+
+:EggsAlternative rdf:type :Alternative ;
+    :food_item :EggsFood ;
+    :amount :EggsQuantity .
+
+:EggsFood rdf:type :FoodItem ;
+    rdfs:label "Eggs" .
+
+:EggsQuantity rdf:type :Quantity ;
+    :value "2" .
+
+:BreadCrumbs rdf:type :Ingredient ;
+    :alternatives (:BreadCrumbsAlternative) .
+
+:BreadCrumbsAlternative rdf:type :Alternative ;
+    :food_item :BreadCrumbsFood ;
+    :amount :BreadCrumbsQuantity .
+
+:BreadCrumbsFood rdf:type :FoodItem ;
+    rdfs:label "Bread Crumbs" .
+
+:BreadCrumbsQuantity rdf:type :Quantity ;
+    :value "½ cup (125mL)" .
+
+:GreenOnions rdf:type :Ingredient ;
+    :alternatives (:GreenOnionsAlternative) .
+
+:GreenOnionsAlternative rdf:type :Alternative ;
+    :food_item :GreenOnionsFood ;
+    :amount :GreenOnionsQuantity .
+
+:GreenOnionsFood rdf:type :FoodItem ;
+    rdfs:label "Green Onions" .
+
+:GreenOnionsQuantity rdf:type :Quantity ;
+    :value "2" .
+
+:SaltAndPepper rdf:type :Ingredient ;
+    :alternatives (:Salt :Pepper) .
+
+:Salt rdf:type :Alternative ;
+    :food_item :SaltFood ;
+    :amount :SaltQuantity .
+
+:Pepper rdf:type :Alternative ;
+    :food_item :PepperFood ;
+    :amount :PepperQuantity .
+
+:SaltFood rdf:type :FoodItem ;
+    rdfs:label "Salt" .
+
+:PepperFood rdf:type :FoodItem ;
+    rdfs:label "Pepper" .
+
+:SaltQuantity rdf:type :Quantity ;
+    :value "to taste" .
+
+:PepperQuantity rdf:type :Quantity ;
+    :value "to taste" .
+
+:Step1 rdf:type :Step ;
+    :order 1 ;
+    :utensils (:MixingBowl) ;
+    :inputs (:TunaOrSalmon :Celery :RelishOrPickles :Eggs :BreadCrumbs :GreenOnions :SaltAndPepper) ;
+    :outputs (:BurgerMixture) ;
+    :Action :CombineAction .
+
+:Step2 rdf:type :Step ;
+    :order 2 ;
+    :utensils () ;
+    :inputs (:BurgerMixture) ;
+    :outputs (:BurgerPatties) ;
+    :Action :ShapeAction .
+
+:Step3 rdf:type :Step ;
+    :order 3 ;
+    :utensils (:NonStickPan :Stove) ;
+    :inputs (:BurgerPatties) ;
+    :outputs (:CookedPatties) ;
+    :Action :CookAction .
+
+:MixingBowl rdf:type :Utensil ;
+    rdfs:label "Large mixing bowl" .
+
+:NonStickPan rdf:type :Utensil ;
+    rdfs:label "Non-stick pan" .
+
+:Stove rdf:type :Utensil ;
+    rdfs:label "Stove" .
+
+:BurgerMixture rdf:type :FoodItem ;
+    rdfs:label "Burger Mixture" .
+
+:BurgerPatties rdf:type :FoodItem ;
+    rdfs:label "Burger Patties" .
+
+:CookedPatties rdf:type :FoodItem ;
+    rdfs:label "Cooked Patties" ;
+    :state "golden brown" .
+
+:CombineAction rdf:type :Action ;
+    rdfs:label "Combine" ;
+    :description "Combine all ingredients in a large mixing bowl." .
+
+:ShapeAction rdf:type :Action ;
+    rdfs:label "Shape" ;
+    :description "Shape the mixture into 4 patties." .
+
+:CookAction rdf:type :Action ;
+    rdfs:label "Cook" ;
+    :description "Cook patties on medium-high heat until both sides are golden brown." .

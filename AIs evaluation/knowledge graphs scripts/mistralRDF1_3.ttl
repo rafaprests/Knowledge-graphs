@@ -1,0 +1,69 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.org/recipe#> .
+
+ex:EasySeafoodBurgers a ex:Recipe ;
+    ex:readyIn "10 minutes" ;
+    ex:serves "4 people" ;
+    ex:hasIngredient ex:Tuna, ex:Celery, ex:Relish, ex:Eggs, ex:BreadCrumbs, ex:GreenOnions, ex:SaltAndPepper ;
+    ex:hasTip ex:Tip1, ex:Tip2, ex:Tip3 ;
+    ex:hasPreparationStep ex:Step1, ex:Step2, ex:Step3 .
+
+ex:Tuna a ex:Ingredient ;
+    ex:domain "Seafood" ;
+    ex:context "Main protein source" ;
+    ex:quantity "1 can (170g)" .
+
+ex:Celery a ex:Ingredient ;
+    ex:domain "Vegetables" ;
+    ex:context "Adds texture and flavor" ;
+    ex:quantity "¼ cup (60mL)" .
+
+ex:Relish a ex:Ingredient ;
+    ex:domain "Condiments" ;
+    ex:context "Adds tangy flavor" ;
+    ex:quantity "2 Tbsp (30mL)" .
+
+ex:Eggs a ex:Ingredient ;
+    ex:domain "Dairy" ;
+    ex:context "Binding agent" ;
+    ex:quantity "2 eggs" .
+
+ex:BreadCrumbs a ex:Ingredient ;
+    ex:domain "Baking" ;
+    ex:context "Adds structure and texture" ;
+    ex:quantity "½ cup (125mL)" .
+
+ex:GreenOnions a ex:Ingredient ;
+    ex:domain "Vegetables" ;
+    ex:context "Adds flavor and color" ;
+    ex:quantity "2 green onions" .
+
+ex:SaltAndPepper a ex:Ingredient ;
+    ex:domain "Seasoning" ;
+    ex:context "Enhances overall flavor" ;
+    ex:quantity "to taste" .
+
+ex:Tip1 a ex:Tip ;
+    ex:description "This recipe makes 4 small patties." .
+
+ex:Tip2 a ex:Tip ;
+    ex:description "Tastes just as delicious with canned salmon." .
+
+ex:Tip3 a ex:Tip ;
+    ex:description "Serve on whole wheat toast, bannock, or a bun." .
+
+ex:Step1 a ex:PreparationStep ;
+    ex:domain "Cooking" ;
+    ex:context "Mixing" ;
+    ex:description "In a large mixing bowl, combine all ingredients." .
+
+ex:Step2 a ex:PreparationStep ;
+    ex:domain "Cooking" ;
+    ex:context "Forming" ;
+    ex:description "Shape into 4 patties." .
+
+ex:Step3 a ex:PreparationStep ;
+    ex:domain "Cooking" ;
+    ex:context "Cooking" ;
+    ex:description "Turn on the stove to medium-high heat. In a non-stick pan, cook patties until both sides are golden brown - about 3 minutes per side." .

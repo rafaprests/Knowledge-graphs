@@ -1,0 +1,11 @@
+You will receive a recipe and a TaskLang template that defines the entities and relationships expected in an RDF Turtle script. Your task is to transform the recipe into a valid RDF Turtle script that conforms to the provided TaskLang schema.
+Requirements:
+1. Strict Schema Compliance: The generated RDF script must strictly adhere to the structure defined in TaskLang. Ensure that all required entities and relationships are present.
+2. Correct Turtle Syntax: The output must be a syntactically valid Turtle RDF script. Validate that prefixes, URIs, literals, and relationships are properly formatted.
+3. Meaningful Entity Mapping: Extract relevant information from the recipe and map it to the correct entities in TaskLang. If an entity is missing, infer it logically where possible.
+4. Clear Relationships: Define relationships clearly, ensuring that each entity connects properly within the knowledge graph structure, the names of the relationships are miningful, it should be clear for the user what are the relationship between two nodes.
+5. Consistent Formatting: Maintain readability by organizing the RDF script properly, using indentation and meaningful labels for URIs.
+Input Structure: All the data is attached in this chat:
+1. A recipe, formatted as plain text.
+2. A TaskLang template, which specifies the expected structure for the RDF representation.
+Output Structure: Your output must be a valid Turtle RDF script that fully represents the recipe according to the TaskLang schema.

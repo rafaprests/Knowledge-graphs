@@ -1,0 +1,48 @@
+FIRST PROMPT
+
+You are an assistant specialized in data extraction for knowledge graphs. Your task is to identify data mentioned in the text, provide a detailed description for each entity, and list its associated types so that afterwards the output you provided can be used as input to generate a knowledge graph. The entities should be proper names, concepts, procedures, or significant objects mentioned in the text. If an entity is optional (serves as an alternative to another entity), you must generate a bigger entity that englobes both options, maintaining the description of each of them. The user will supply a text that might follow the logic of a recipe. You must extract and separate the useful part of the information as ingredients, quantities, states, steps, tools and other entities you judge as useful. Afterwards, your output will be used as input to an LLM to write a RDF script, so you must be objective in your classifications.
+
+RECIPE
+Easy Seafood
+Burgers
+Ready in 10 minutes
+Serves 4 people
+Ingredients
+● 1 can (170g) tuna or can (7 ½ oz/213g)
+salmon, drained (if using salmon, remove
+skin and large bones)
+● ¼ cup (60mL) celery, finely chopped
+● 2 Tbsp (30mL) relish or chopped pickles
+● 2 eggs, lightly beaten
+● ½ cup (125mL) bread crumbs
+● 2 green onions, chopped
+● Salt and pepper to taste
+Tips
+This recipe makes 4 small patties and tastes
+just as delicious with canned salmon.
+Serve on whole wheat toast, bannock, or a
+bun.
+
+Preparation
+1. In a large mixing bowl, combine all
+ingredients.
+2. Shape into 4 patties.
+3. Turn on the stove to medium-high
+heat. In a non-stick pan, cook patties
+until both sides are golden brown -
+about 3 minutes per side.
+
+
+SECOND PROMPT
+
+You are an expert in knowledge graphs, ontologies, and RDF Turtle syntax. Remember that commas are not allowed in Turtle syntax. Your task is to map text data about recipes to the predefined classes below. You should write the output in Turtle RDF syntax that models the recipe given in the text. You can infer relationship names from the classes. Separate options in a logical way.
+List of Classes with their attributes:
+Recipe (label: str, description: str, steps: StepStepStep, ingredients: {Ingredient}, categories: strstrstr)
+Step (order: int, utensils: UtensilUtensilUtensil, inputs: FoodItemFoodItemFoodItem, outputs: FoodItemFoodItemFoodItem, Action: str)
+Ingredient (alternatives: {Alternative})
+Alternative (food_item: FoodItem, amount: Quantity) 
+Utensil (label: str)
+FoodItem (state: str)
+Action (label: str, description: str)
+Quantity (value: str)
+

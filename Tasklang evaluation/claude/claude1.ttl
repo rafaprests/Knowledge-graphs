@@ -1,0 +1,121 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tasklang: <http://example.org/tasklang/> .
+@prefix recipe: <http://example.org/recipes/seafood-burgers/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Problem Definition
+recipe:SeafoodBurgersProblem a tasklang:Problem ;
+    tasklang:problemName "Easy Seafood Burgers" ;
+    tasklang:description "Prepare quick and easy seafood burgers using canned fish" ;
+    tasklang:goal "Create 4 seafood burger patties" ;
+    tasklang:inputs [
+        a tasklang:Resource ;
+        tasklang:resources [
+            rdf:_1 [
+                tasklang:resourceName "Canned Fish" ;
+                tasklang:quantity "170g"@en ;
+                tasklang:resourceType "Tuna or Salmon"@en
+            ] ;
+            rdf:_2 [
+                tasklang:resourceName "Celery" ;
+                tasklang:quantity "60mL"@en ;
+                tasklang:preparation "Finely chopped"@en
+            ] ;
+            rdf:_3 [
+                tasklang:resourceName "Relish or Pickles" ;
+                tasklang:quantity "30mL"@en
+            ] ;
+            rdf:_4 [
+                tasklang:resourceName "Eggs" ;
+                tasklang:quantity "2"^^xsd:integer
+            ] ;
+            rdf:_5 [
+                tasklang:resourceName "Bread Crumbs" ;
+                tasklang:quantity "125mL"@en
+            ] ;
+            rdf:_6 [
+                tasklang:resourceName "Green Onions" ;
+                tasklang:quantity "2"^^xsd:integer ;
+                tasklang:preparation "Chopped"@en
+            ]
+        ]
+    ] ;
+    tasklang:context [
+        a tasklang:Context ;
+        tasklang:domain "Home Cooking"@en ;
+        tasklang:constraints "Ready in 10 minutes, serves 4 people"@en ;
+        tasklang:parameters [
+            a tasklang:Parameter ;
+            tasklang:name "Cooking Heat" ;
+            tasklang:value "Medium-High"@en ;
+            tasklang:unit "Stove Temperature"@en
+        ]
+    ] ;
+    tasklang:qualityCriteria [
+        rdf:_1 "Golden brown color on both sides"@en ;
+        rdf:_2 "Patties hold together well"@en
+    ] ;
+    tasklang:outputs [
+        tasklang:finalProduct "4 seafood burger patties"@en ;
+        tasklang:secondaryOutputs [
+            rdf:_1 "Can be served on whole wheat toast, bannock, or bun"@en
+        ]
+    ] .
+
+# Method Definition
+recipe:SeafoodBurgersMethod a tasklang:Method ;
+    tasklang:methodName "Easy Seafood Burger Preparation" ;
+    tasklang:domain "Seafood Cooking"@en ;
+    tasklang:description "Method for creating seafood burger patties" ;
+    tasklang:prerequisites [
+        rdf:_1 "Ingredients at room temperature"@en ;
+        rdf:_2 "Non-stick pan available"@en
+    ] ;
+    tasklang:steps [
+        rdf:_1 [
+            a tasklang:Task ;
+            tasklang:taskName "Combine Ingredients" ;
+            tasklang:action "Mix all ingredients in a large mixing bowl"@en ;
+            tasklang:duration "2 minutes"@en ;
+            tasklang:output "Mixed seafood burger mixture"@en
+        ] ;
+        rdf:_2 [
+            a tasklang:Task ;
+            tasklang:taskName "Shape Patties" ;
+            tasklang:action "Form the mixture into 4 equal patties"@en ;
+            tasklang:duration "1 minute"@en ;
+            tasklang:output "4 raw seafood burger patties"@en
+        ] ;
+        rdf:_3 [
+            a tasklang:Task ;
+            tasklang:taskName "Cook Patties" ;
+            tasklang:action "Cook patties in a non-stick pan at medium-high heat until golden brown"@en ;
+            tasklang:duration "6 minutes" ;
+            tasklang:notes "3 minutes per side"@en ;
+            tasklang:output "Fully cooked seafood burger patties"@en
+        ]
+    ] ;
+    tasklang:risks [
+        rdf:_1 [
+            tasklang:riskName "Overcooking" ;
+            tasklang:severity "Medium"@en ;
+            tasklang:mitigation "Monitor cooking time closely, 3 minutes per side"@en
+        ] ;
+        rdf:_2 [
+            tasklang:riskName "Patty Disintegration" ;
+            tasklang:severity "Low"@en ;
+            tasklang:mitigation "Ensure ingredients are well mixed, use enough binding agents"@en
+        ]
+    ] .
+
+# Strategy Definition
+recipe:SeafoodBurgersStrategy a tasklang:Strategy ;
+    tasklang:problem recipe:SeafoodBurgersProblem ;
+    tasklang:methods [
+        rdf:_1 recipe:SeafoodBurgersMethod
+    ] ;
+    tasklang:strategyNotes [
+        rdf:_1 "Versatile recipe works with tuna or salmon"@en ;
+        rdf:_2 "Quick and easy preparation method"@en
+    ] .

@@ -1,0 +1,136 @@
+@prefix : <http://example.org/recipe#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+### Recipe Definition
+:EasySeafoodBurgers a :Recipe ;
+    rdfs:label "Easy Seafood Burgers" ;
+    :description "Main dish featuring canned fish patties" ;
+    :categories ("Dish" "Recipe") ;
+    :hasStep :Step1, :Step2, :Step3 ;
+    :hasIngredient :CannedSeafood, :Celery, :RelishPickles, :Eggs, :BreadCrumbs, :GreenOnions, :SaltPepper ;
+    :totalTime "10 minutes" ;
+    :cookingTime "6 minutes" .
+
+### Ingredients with Alternatives
+:CannedSeafood a :Ingredient ;
+    :hasAlternative :Tuna, :Salmon .
+
+:Tuna a :Alternative ;
+    :foodItem :TunaFoodItem ;
+    :amount :TunaQuantity .
+
+:Salmon a :Alternative ;
+    :foodItem :SalmonFoodItem ;
+    :amount :SalmonQuantity .
+
+:TunaFoodItem a :FoodItem ;
+    :state "Drained" ;
+    rdfs:label "Tuna" .
+
+:SalmonFoodItem a :FoodItem ;
+    :state "Drained with skin/bones removed" ;
+    rdfs:label "Salmon" .
+
+:TunaQuantity a :Quantity ;
+    :value "170g can" .
+
+:SalmonQuantity a :Quantity ;
+    :value "213g can" .
+
+### Other Ingredients
+:Celery a :Ingredient ;
+    :foodItem :CeleryFoodItem ;
+    :amount :CeleryQuantity .
+
+:CeleryFoodItem a :FoodItem ;
+    :state "Finely chopped" ;
+    rdfs:label "Celery" .
+
+:CeleryQuantity a :Quantity ;
+    :value "60mL" .
+
+:RelishPickles a :Ingredient ;
+    :hasAlternative :Relish, :Pickles .
+
+:Relish a :Alternative ;
+    :foodItem [ a :FoodItem ; rdfs:label "Relish" ] ;
+    :amount :RelishQuantity .
+
+:Pickles a :Alternative ;
+    :foodItem [ a :FoodItem ; rdfs:label "Pickles" ; :state "Chopped" ] ;
+    :amount :PicklesQuantity .
+
+:RelishQuantity a :Quantity ;
+    :value "30mL" .
+
+:PicklesQuantity a :Quantity ;
+    :value "30mL" .
+
+### Remaining Ingredients (Eggs, Bread Crumbs, etc.)
+:Eggs a :Ingredient ;
+    :foodItem [ a :FoodItem ; rdfs:label "Eggs" ; :state "Lightly beaten" ] ;
+    :amount [ a :Quantity ; :value "2 units" ] .
+
+:BreadCrumbs a :Ingredient ;
+    :foodItem [ a :FoodItem ; rdfs:label "Bread Crumbs" ] ;
+    :amount [ a :Quantity ; :value "125mL" ] .
+
+:GreenOnions a :Ingredient ;
+    :foodItem [ a :FoodItem ; rdfs:label "Green Onions" ; :state "Chopped" ] ;
+    :amount [ a :Quantity ; :value "2 units" ] .
+
+:SaltPepper a :Ingredient ;
+    :foodItem [ a :FoodItem ; rdfs:label "Salt & Pepper" ] .
+
+### Tools & Utensils
+:Step1 :utensil :LargeMixingBowl .
+:Step3 :utensil :NonStickPan, :Stove .
+
+:LargeMixingBowl a :Utensil ;
+    rdfs:label "Large Mixing Bowl" .
+
+:NonStickPan a :Utensil ;
+    rdfs:label "Non-Stick Pan" .
+
+:Stove a :Utensil ;
+    rdfs:label "Stove" .
+
+### Process Steps
+:Step1 a :Step ;
+    :order 1 ;
+    :action [ a :Action ; rdfs:label "Mix all components in bowl" ] ;
+    :inputs :TunaFoodItem, :SalmonFoodItem, :CeleryFoodItem, :Relish, :Pickles, :Eggs, :BreadCrumbs, :GreenOnions, :SaltPepper ;
+    :outputs :Mixture .
+
+:Step2 a :Step ;
+    :order 2 ;
+    :action [ a :Action ; rdfs:label "Shape mixture into 4 round units" ] ;
+    :inputs :Mixture ;
+    :outputs :Patties .
+
+:Step3 a :Step ;
+    :order 3 ;
+    :action [ a :Action ; rdfs:label "Cook at medium-high heat until golden brown" ] ;
+    :inputs :Patties ;
+    :outputs :CookedPatties .
+
+### Final Outputs
+:Patties a :FoodItem ;
+    rdfs:label "Patties" ;
+    :quantity "4 units" .
+
+:CookedPatties a :FoodItem ;
+    rdfs:label "Cooked Patties" .
+
+:ServingBase a :Ingredient ;
+    :hasAlternative :Toast, :Bannock, :Bun .
+
+:Toast a :Alternative ;
+    :foodItem [ a :FoodItem ; rdfs:label "Whole Wheat Toast" ] .
+
+:Bannock a :Alternative ;
+    :foodItem [ a :FoodItem ; rdfs:label "Bannock" ] .
+
+:Bun a :Alternative ;
+    :foodItem [ a :FoodItem ; rdfs:label "Bun" ] .
